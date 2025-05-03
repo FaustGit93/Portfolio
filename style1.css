@@ -660,6 +660,13 @@ nav .fa-solid
 		font-size: 28px;
 	}
 
+	#drawing-container {
+		width: 700px;
+		height: 1400px;;
+		background-color: black;
+		position: absolute;
+		margin-top: -500px;
+	  }
 
 
 
