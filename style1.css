@@ -94,8 +94,8 @@ body {
 	position: absolute;
 	margin-top: -500px;
   }
-  canvas {
-	position: absolute;
+  canvas1 {
+	position: relative;
 	top: 0;
 	left: 0;
   }
