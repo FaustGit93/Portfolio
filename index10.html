@@ -40,13 +40,12 @@
                 </ul>
                 <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
             </nav>
-            <div id="drawing-container"></div>
             <div class="header2-text">
                 <p class="z10">Anno</p>
                 <h1 class="z10">Installazioni Interattive<span>Index10 </span><br>/////////</h1>
             
             </div>
-           
+            <div id="drawing-container"></div>
 
         </div>
     </div>
@@ -314,7 +313,6 @@
 
 <script>
 
-
 let brushSize = 15;   // Dimensione del quadrato (dimensione del pennello)
 let spacing = 10;     // Spazio tra i quadrati disegnati
 let lastX = null;
@@ -322,10 +320,11 @@ let lastY = null;
 let drawing = false;  // Variabile per tracciare se il disegno è attivo
 let clearing = false; // Variabile per il clear
 
-let rotationSpeed = 0.01; // Velocità di rotazione (puoi cambiarla come preferisci)
+let rotationSpeed = 0.05; // Velocità di rotazione (puoi cambiarla come preferisci)
 let angle = 0;  // Angolo iniziale per la rotazione
 
 let containerW, containerH;
+let scrollEnabled = false;  // Variabile per tracciare se lo scrolling è abilitato
 
 function setup() {
     let container = select('#drawing-container');
@@ -336,6 +335,9 @@ function setup() {
     canvas.parent('drawing-container');
     canvas.style('pointer-events', 'none');
     document.addEventListener('contextmenu', e => e.preventDefault());
+    
+    // Disabilitiamo lo scroll inizialmente
+    disableScroll();
 }
 
 function draw() {
@@ -360,7 +362,7 @@ function draw() {
 
     // Disegna il quadrato al click del mouse (tasto sinistro)
     if (drawing && mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-        fill(255, 0, 0, 70); // Colore per il disegno
+        fill(255, 0, 0, 50); // Colore per il disegno
         noStroke();
         rectMode(CENTER);
         push(); // Salva il contesto per la rotazione
@@ -392,11 +394,42 @@ function mouseReleased() {
     }
 }
 
+// Gestione della rotellina per aumentare lo spacing
 function mouseWheel(event) {
-    brushSize += event.delta > 0 ? -2 : 2;  // Ingrossa o rimpicciolisce la dimensione del quadrato
-    brushSize = constrain(brushSize, 5, 200);  // Impedisce di diventare troppo piccolo o grande
-    return false;
+    if (!drawing) {
+        // Se non in modalità disegno, aumenta lo spacing
+        spacing += event.delta * 0.1;  // Aumenta la distanza tra i quadrati
+        spacing = constrain(spacing, 5, 50);  // Imposta i limiti per lo spacing
+    } else {
+        // Se in modalità disegno, aumenta la dimensione del quadrato
+        brushSize += event.delta * 0.1;  // Aumenta la dimensione del quadrato
+        brushSize = constrain(brushSize, 5, 100);  // Imposta i limiti per la dimensione del quadrato
+    }
 }
+
+// Funzione per disabilitare lo scroll della pagina
+function disableScroll() {
+    scrollEnabled = false;
+    document.body.style.overflow = 'hidden';  // Disabilita lo scroll
+}
+
+// Funzione per riabilitare lo scroll della pagina
+function enableScroll() {
+    scrollEnabled = true;
+    document.body.style.overflow = 'auto';  // Riabilita lo scroll
+}
+
+// Rileva il doppio clic per riabilitare lo scroll
+function doubleClicked() {
+    if (!scrollEnabled) {
+        enableScroll();  // Riabilita lo scroll al doppio clic
+    } else {
+        disableScroll();  // Disabilita lo scroll se già abilitato
+    }
+}
+
+
+
 
 
 
