@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--------  <meta name="viewport" content="width=device-width, initial-scale=1.0">    ------>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
     <title>Personal Portfolio Title</title>
     <link rel="stylesheet" href="style1.css">
     <script src="https://kit.fontawesome.com/42a675b1a0.js" crossorigin="anonymous"></script>
@@ -330,21 +333,31 @@ let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent); // Rileva 
 
 
 function setup() {
-    let canvasW, canvasH;
+  let container = select('#drawing-container');
+  let isMobile = /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
 
-    if (isMobile) {
-        canvasW = windowWidth * 0.9;   // 90% della larghezza dello schermo
-        canvasH = windowHeight * 0.1;  // 60% dell'altezza dello schermo
-    } else {
-        let container = select('#drawing-container');
-        canvasW = container.elt.offsetWidth;
-        canvasH = container.elt.offsetHeight;
-    }
+  let w, h;
 
-    let canvas = createCanvas(canvasW, canvasH);
-    canvas.parent('drawing-container');
-    canvas.style('pointer-events', 'none');
-    document.addEventListener('contextmenu', e => e.preventDefault());
+  if (isMobile) {
+    // Dimensione fissa per mobile
+    w = 400;
+    h = 600;
+  } else {
+    // Dimensione dinamica su desktop
+    w = container.elt.offsetWidth;
+    h = container.elt.offsetHeight;
+
+    // Aggiungi anche un resize listener per aggiornare le dimensioni se vuoi:
+    window.addEventListener('resize', () => {
+      resizeCanvas(container.elt.offsetWidth, container.elt.offsetHeight);
+    });
+  }
+
+  let canvas = createCanvas(w, h);
+  canvas.parent('drawing-container');
+  canvas.style('pointer-events', 'none');
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
 
     if (isMobile) {
         document.addEventListener('touchmove', e => {
