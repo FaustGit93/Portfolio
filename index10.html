@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="style1.css">
     <script src="https://kit.fontawesome.com/42a675b1a0.js" crossorigin="anonymous"></script>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+
     <!-----https://script.google.com/macros/s/AKfycbwk-vbpH_SJFjrexmiQl9piEc8U6StW-7xg4EYMIU-iuVLz2i0ReLtPKDWMqQ10nGd_sg/exec------->
 </head>
 
@@ -18,11 +22,13 @@
     
 
     <div id="header1">
-        <img src="Images/666.gif" loop="infinite" alt="background animation" class="background-image" />
+    <!------    <img src="Images/666.gif" loop="infinite" alt="background animation" class="background-image" />   ---->
         <div class="container">
+
+         
             <nav>
                 <img src="Images/" class="" alt="">
-
+              
                 <!-----   <ul id="sidemenu"> ------------>
                 <ul id="sidemenu">
                     <li><a href="index.html">Home</a></li>
@@ -34,10 +40,14 @@
                 </ul>
                 <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
             </nav>
+            <div id="drawing-container"></div>
             <div class="header2-text">
                 <p class="z10">Anno</p>
                 <h1 class="z10">Installazioni Interattive<span>Index10 </span><br>/////////</h1>
+            
             </div>
+           
+
         </div>
     </div>
     <!-----  Header End ------------>
@@ -298,6 +308,111 @@
         }
 
     </script>
+
+<!-------------     Script P5                 -------->
+
+
+<script>
+
+
+let brushSize = 15;   // Dimensione del quadrato (dimensione del pennello)
+let spacing = 10;     // Spazio tra i quadrati disegnati
+let lastX = null;
+let lastY = null;
+let drawing = false;  // Variabile per tracciare se il disegno è attivo
+let clearing = false; // Variabile per il clear
+
+let rotationSpeed = 0.01; // Velocità di rotazione (puoi cambiarla come preferisci)
+let angle = 0;  // Angolo iniziale per la rotazione
+
+let containerW, containerH;
+
+function setup() {
+    let container = select('#drawing-container');
+    containerW = container.elt.offsetWidth;
+    containerH = container.elt.offsetHeight;
+
+    let canvas = createCanvas(containerW, containerH);
+    canvas.parent('drawing-container');
+    canvas.style('pointer-events', 'none');
+    document.addEventListener('contextmenu', e => e.preventDefault());
+}
+
+function draw() {
+    if (clearing) {
+        rectMode(CORNER);
+        fill(0, 20);
+        rect(0, 0, width, height);
+        return;
+    }
+
+    // Mostra il quadrato come anteprima (ma non lo disegna finché non viene cliccato)
+    if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height && !drawing) {
+        noStroke();
+        fill(255, 0, 0, 100); // Colore per la preview
+        rectMode(CENTER);
+        push(); // Salva il contesto per la rotazione
+        translate(mouseX, mouseY);
+        rotate(angle);  // Applica la rotazione
+        rect(0, 0, brushSize, brushSize);  // Disegna il quadrato ruotato
+        pop();  // Ripristina il contesto
+    }
+
+    // Disegna il quadrato al click del mouse (tasto sinistro)
+    if (drawing && mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+        fill(255, 0, 0, 70); // Colore per il disegno
+        noStroke();
+        rectMode(CENTER);
+        push(); // Salva il contesto per la rotazione
+        translate(mouseX, mouseY);
+        rotate(angle);  // Applica la rotazione
+        rect(0, 0, brushSize, brushSize);  // Disegna il quadrato ruotato
+        pop();  // Ripristina il contesto
+    }
+
+    // Incrementa l'angolo per la rotazione nel tempo
+    angle += rotationSpeed;
+}
+
+function mousePressed() {
+    if (mouseButton === LEFT) {
+        drawing = true;  // Attiva il disegno al click del tasto sinistro
+    }
+    if (mouseButton === RIGHT) {
+        clearing = true;  // Inizia la cancellazione
+    }
+}
+
+function mouseReleased() {
+    if (mouseButton === LEFT) {
+        drawing = false;  // Disattiva il disegno al rilascio del tasto sinistro
+    }
+    if (mouseButton === RIGHT) {
+        clearing = false;  // Ferma la cancellazione
+    }
+}
+
+function mouseWheel(event) {
+    brushSize += event.delta > 0 ? -2 : 2;  // Ingrossa o rimpicciolisce la dimensione del quadrato
+    brushSize = constrain(brushSize, 5, 200);  // Impedisce di diventare troppo piccolo o grande
+    return false;
+}
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+<!-------------     Script P5                 -------->
+
 
 
 </body>
