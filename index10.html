@@ -334,7 +334,7 @@ function setup() {
 
     if (isMobile) {
         canvasW = windowWidth * 0.9;   // 90% della larghezza dello schermo
-        canvasH = windowHeight * 0.5;  // 60% dell'altezza dello schermo
+        canvasH = windowHeight * 0.1;  // 60% dell'altezza dello schermo
     } else {
         let container = select('#drawing-container');
         canvasW = container.elt.offsetWidth;
@@ -358,18 +358,9 @@ function setup() {
 }
 
 function windowResized() {
-    let canvasW, canvasH;
 
-    if (isMobile) {
-        canvasW = windowWidth * 0.9;
-        canvasH = windowHeight * 0.6;
-    } else {
-        let container = select('#drawing-container');
-        canvasW = container.elt.offsetWidth;
-        canvasH = container.elt.offsetHeight;
-    }
+    resizeCanvas(700, 4000); // Sempre fisso
 
-    resizeCanvas(canvasW, canvasH);
 }
 
 
