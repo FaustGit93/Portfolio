@@ -318,7 +318,7 @@
 
 
 let brushSize = 15;
-let spacing = 10;
+let spacing = 40;
 let lastX = null;
 let lastY = null;
 let drawing = false;
@@ -387,7 +387,8 @@ function draw() {
 
     if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height && !drawing) {
         noStroke();
-        fill(255, 0, 0, 100);
+        let alpha = random(10,70);
+        fill(255, 0, 0, alpha);
         rectMode(CENTER);
         push();
         translate(mouseX, mouseY);
