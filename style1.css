@@ -8,12 +8,15 @@ html
 {
 
 scroll-behavior: smooth;
+overflow-x: hidden; /* Blocca lo scroll orizzontale */
+
 
 }
 
 body {
 	background: #000000;
 	color: #ffffff
+
 	
 }
 
