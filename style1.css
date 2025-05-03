@@ -45,7 +45,7 @@ body {
 
 #renderCanvas {
     width: 75%;
-    height: 100;
+    height: 100%;
     display: block;
 	margin-top: -400px;
 	
@@ -63,12 +63,13 @@ body {
 	display: flex;
 	gap: 20px;
 	z-index: 10;
+
 	
   }
 
 
   #model-description {
-	color: rgb(255, 0, 0);
+	color: rgb(228, 228, 228);
 	font-family: 'SF Pro Display', sans-serif;
 
 	text-align: center;
@@ -79,10 +80,11 @@ body {
 	margin-right: auto;
 	margin-top: -40px;
 	padding: 0.5rem 1rem;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0);
 	border-radius: 8px;
 	transition: opacity 0.3s ease-in-out;
 	opacity: 1;
+	position: relative
 	
   }
 
@@ -94,7 +96,7 @@ body {
 	position: absolute;
 	margin-top: -500px;
   }
-  canvas1 {
+  canvas {
 	position: relative;
 	top: 0;
 	left: 0;
@@ -102,18 +104,19 @@ body {
 
 
   .icon-buttons i {
-	font-size: 32px;
-	color: white;
+	font-size: 24px;
+	color: rgba(255, 255, 255, 0.909);
 	cursor: pointer;
 	background: rgba(0, 0, 0, 0.5);
 	padding: 12px;
+	
 	border-radius: 50%;
 	transition: background 0.3s;
 	
   }
 
   .icon-buttons i:hover {
-	background: rgba(255, 255, 255, 0.2);
+	background: rgba(255, 0, 0, 0.6);
   }
 
 
