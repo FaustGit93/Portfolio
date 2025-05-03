@@ -313,32 +313,65 @@
 
 <script>
 
-let brushSize = 15;   // Dimensione del quadrato (dimensione del pennello)
-let spacing = 10;     // Spazio tra i quadrati disegnati
+
+let brushSize = 15;
+let spacing = 10;
 let lastX = null;
 let lastY = null;
-let drawing = false;  // Variabile per tracciare se il disegno è attivo
-let clearing = false; // Variabile per il clear
+let drawing = false;
+let clearing = false;
 
-let rotationSpeed = 0.05; // Velocità di rotazione (puoi cambiarla come preferisci)
-let angle = 0;  // Angolo iniziale per la rotazione
+let rotationSpeed = 0.05;
+let angle = 0;
 
-let containerW, containerH;
-let scrollEnabled = false;  // Variabile per tracciare se lo scrolling è abilitato
+let scrollEnabled = false;
+let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent); // Rileva mobile
+
+
 
 function setup() {
-    let container = select('#drawing-container');
-    containerW = container.elt.offsetWidth;
-    containerH = container.elt.offsetHeight;
+    let canvasW, canvasH;
 
-    let canvas = createCanvas(containerW, containerH);
+    if (isMobile) {
+        canvasW = windowWidth * 0.9;   // 90% della larghezza dello schermo
+        canvasH = windowHeight * 0.5;  // 60% dell'altezza dello schermo
+    } else {
+        let container = select('#drawing-container');
+        canvasW = container.elt.offsetWidth;
+        canvasH = container.elt.offsetHeight;
+    }
+
+    let canvas = createCanvas(canvasW, canvasH);
     canvas.parent('drawing-container');
     canvas.style('pointer-events', 'none');
     document.addEventListener('contextmenu', e => e.preventDefault());
-    
-    // Disabilitiamo lo scroll inizialmente
-    disableScroll();
+
+    if (isMobile) {
+        document.addEventListener('touchmove', e => {
+            if (drawing && e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    }
+
+
 }
+
+function windowResized() {
+    let canvasW, canvasH;
+
+    if (isMobile) {
+        canvasW = windowWidth * 0.9;
+        canvasH = windowHeight * 0.6;
+    } else {
+        let container = select('#drawing-container');
+        canvasW = container.elt.offsetWidth;
+        canvasH = container.elt.offsetHeight;
+    }
+
+    resizeCanvas(canvasW, canvasH);
+}
+
 
 function draw() {
     if (clearing) {
@@ -348,85 +381,69 @@ function draw() {
         return;
     }
 
-    // Mostra il quadrato come anteprima (ma non lo disegna finché non viene cliccato)
     if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height && !drawing) {
         noStroke();
-        fill(255, 0, 0, 100); // Colore per la preview
+        fill(255, 0, 0, 100);
         rectMode(CENTER);
-        push(); // Salva il contesto per la rotazione
+        push();
         translate(mouseX, mouseY);
-        rotate(angle);  // Applica la rotazione
-        rect(0, 0, brushSize, brushSize);  // Disegna il quadrato ruotato
-        pop();  // Ripristina il contesto
+        rotate(angle);
+        rect(0, 0, brushSize, brushSize);
+        pop();
     }
 
-    // Disegna il quadrato al click del mouse (tasto sinistro)
     if (drawing && mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-        fill(255, 0, 0, 50); // Colore per il disegno
+        fill(255, 0, 0, 50);
         noStroke();
         rectMode(CENTER);
-        push(); // Salva il contesto per la rotazione
+        push();
         translate(mouseX, mouseY);
-        rotate(angle);  // Applica la rotazione
-        rect(0, 0, brushSize, brushSize);  // Disegna il quadrato ruotato
-        pop();  // Ripristina il contesto
+        rotate(angle);
+        rect(0, 0, brushSize, brushSize);
+        pop();
     }
 
-    // Incrementa l'angolo per la rotazione nel tempo
     angle += rotationSpeed;
 }
 
 function mousePressed() {
-    if (mouseButton === LEFT) {
-        drawing = true;  // Attiva il disegno al click del tasto sinistro
-    }
-    if (mouseButton === RIGHT) {
-        clearing = true;  // Inizia la cancellazione
-    }
+    if (mouseButton === LEFT) drawing = true;
+    if (mouseButton === RIGHT) clearing = true;
 }
 
 function mouseReleased() {
-    if (mouseButton === LEFT) {
-        drawing = false;  // Disattiva il disegno al rilascio del tasto sinistro
-    }
-    if (mouseButton === RIGHT) {
-        clearing = false;  // Ferma la cancellazione
-    }
+    if (mouseButton === LEFT) drawing = false;
+    if (mouseButton === RIGHT) clearing = false;
 }
 
-// Gestione della rotellina per aumentare lo spacing
 function mouseWheel(event) {
     if (!drawing) {
-        // Se non in modalità disegno, aumenta lo spacing
-        spacing += event.delta * 0.1;  // Aumenta la distanza tra i quadrati
-        spacing = constrain(spacing, 5, 50);  // Imposta i limiti per lo spacing
+        spacing += event.delta * 0.1;
+        spacing = constrain(spacing, 5, 50);
     } else {
-        // Se in modalità disegno, aumenta la dimensione del quadrato
-        brushSize += event.delta * 0.1;  // Aumenta la dimensione del quadrato
-        brushSize = constrain(brushSize, 5, 100);  // Imposta i limiti per la dimensione del quadrato
+        brushSize += event.delta * 0.1;
+        brushSize = constrain(brushSize, 5, 100);
     }
 }
 
-// Funzione per disabilitare lo scroll della pagina
 function disableScroll() {
     scrollEnabled = false;
-    document.body.style.overflow = 'hidden';  // Disabilita lo scroll
+    document.body.style.overflow = 'hidden';
 }
 
-// Funzione per riabilitare lo scroll della pagina
 function enableScroll() {
     scrollEnabled = true;
-    document.body.style.overflow = 'auto';  // Riabilita lo scroll
+    document.body.style.overflow = 'auto';
 }
 
-// Rileva il doppio clic per riabilitare lo scroll
 function doubleClicked() {
     if (!scrollEnabled) {
-        enableScroll();  // Riabilita lo scroll al doppio clic
+        enableScroll();
     } else {
-        disableScroll();  // Disabilita lo scroll se già abilitato
+        disableScroll();
     }
 }
+
 
 
 
