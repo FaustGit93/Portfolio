@@ -114,65 +114,72 @@
 
 
 <script>
-    const canvas = document.getElementById("renderCanvas");
-    const engine = new BABYLON.Engine(canvas, true);
+  const canvas = document.getElementById("renderCanvas");
+  const engine = new BABYLON.Engine(canvas, true);
 
-    //const models = ["statue.glb", "park.glb", "alessandro_magno.glb","priest_colossal.glb"]; // Modelli disponibili
-    const models = ["statue.glb", "statue2.glb", "Rock_decimated1.glb"]; // Modelli disponibili
+  const models = ["statue.glb", "statue2.glb", "Rock_decimated1.glb", ""]; // Modelli disponibili
 
-    let currentModelIndex = 0;
-    let scene;
-    let currentModelRoot = null;
+  let currentModelIndex = 0;
+  let scene;
+  let currentModelRoot = null;
+  let isLoadingModel = false; // flag di controllo
 
-    function createScene() {
-      scene = new BABYLON.Scene(engine);
-      scene.clearColor = new BABYLON.Color4(0, 0, 0, 1); // Nero
+  function createScene() {
+    scene = new BABYLON.Scene(engine);
+    scene.clearColor = new BABYLON.Color4(0, 0, 0, 1); // Nero
 
-      const camera = new BABYLON.ArcRotateCamera(
-        "Camera",
-        Math.PI / 2,
-        Math.PI / 2.5,
-        100,
-        BABYLON.Vector3.Zero(),
-        scene
-      );
-      camera.attachControl(canvas, true);
-      camera.lowerRadiusLimit = 50;
-      camera.upperRadiusLimit = 200;
-      camera.lowerBetaLimit = 0.5;
-      camera.upperBetaLimit = 1.5;
+    const camera = new BABYLON.ArcRotateCamera(
+      "Camera",
+      Math.PI / 2,
+      Math.PI / 2.5,
+      100,
+      BABYLON.Vector3.Zero(),
+      scene
+    );
+    camera.attachControl(canvas, true);
+    camera.lowerRadiusLimit = 50;
+    camera.upperRadiusLimit = 200;
+    camera.lowerBetaLimit = 0.5;
+    camera.upperBetaLimit = 1.5;
 
-      new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0), scene);
-      return scene;
-    }
+    new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0), scene);
+    return scene;
+  }
 
-    function loadModel(filename) {
-      if (currentModelRoot) currentModelRoot.dispose();
+  function loadModel(filename) {
+    if (isLoadingModel || !filename) return; // blocco caricamento se già in corso o se filename vuoto
+    isLoadingModel = true;
 
-      BABYLON.SceneLoader.ImportMesh("", "models/", filename, scene, function (meshes) {
-        if (meshes.length > 0) {
-          currentModelRoot = meshes[0].parent || meshes[0];
-        }
-      });
-    }
+    if (currentModelRoot) currentModelRoot.dispose();
 
-    function nextModel() {
-      currentModelIndex = (currentModelIndex + 1) % models.length;
-      loadModel(models[currentModelIndex]);
-    }
+    BABYLON.SceneLoader.ImportMesh("", "models/", filename, scene, function (meshes) {
+      if (meshes.length > 0) {
+        currentModelRoot = meshes[0].parent || meshes[0];
+      }
+      isLoadingModel = false; // sblocca dopo caricamento
+    }, null, function (scene, message) {
+      console.error("Errore nel caricamento:", message);
+      isLoadingModel = false; // sblocca anche in caso di errore
+    });
+  }
 
-    function prevModel() {
-      currentModelIndex = (currentModelIndex - 1 + models.length) % models.length;
-      loadModel(models[currentModelIndex]);
-    }
+  function nextModel() {
+    currentModelIndex = (currentModelIndex + 1) % models.length;
+    loadModel(models[currentModelIndex]);
+  }
 
-    scene = createScene();
-    loadModel(models[currentModelIndex]); // Primo modello
+  function prevModel() {
+    currentModelIndex = (currentModelIndex - 1 + models.length) % models.length;
+    loadModel(models[currentModelIndex]);
+  }
 
-    engine.runRenderLoop(() => scene.render());
+  scene = createScene();
+  loadModel(models[currentModelIndex]); // Primo modello
 
-    window.addEventListener("resize", () => engine.resize());
-  </script>
+  engine.runRenderLoop(() => scene.render());
+
+  window.addEventListener("resize", () => engine.resize());
+</script>
 
 
 <script>
