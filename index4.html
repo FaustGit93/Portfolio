@@ -341,23 +341,33 @@
       let startDelay = 2000;
       let nextWaveTime = 0;
       let spawning = false;
+
   
       const sketch = (p) => {
+
+       
         p.setup = function () {
+         
+
           const container = document.getElementById("gd-game-container");
           p.createCanvas(container.offsetWidth, container.offsetHeight).addClass('gd-canvas');
+          p.frameRate(60);
           updateGroundLevel(p);
           initPlayer(p);
+        
           nextWaveTime = p.millis() + startDelay;
          
         };
   
         p.draw = function () {
           p.background(3);
+         
+        
   
           // Terreno
           p.fill(255, 0, 0, 60);
           p.rect(0, groundLevel + player.size, p.width, p.height - groundLevel);
+
   
           // Gestione spawn ostacoli
           if (p.millis() >= nextWaveTime && !spawning) {
@@ -464,7 +474,8 @@
             setTimeout(() => {
               obstacles.push(new Obstacle(p.width, groundLevel + player.size));
               if (i === amount - 1) {
-                nextWaveTime = p.millis() + 2500;
+                nextWaveTime = p.millis() + p.random(1500, 3000);
+
                 spawning = false;
               }
             }, i * delayBetween);
@@ -485,7 +496,7 @@
   
           draw(p) {
             p.fill(255, 0, 0);
-           
+       
             
             p.triangle(
               this.x, this.baseY,
