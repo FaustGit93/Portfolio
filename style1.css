@@ -837,6 +837,7 @@ nav .fa-solid
 
 
 
+
 	}
 
 	#drawing-container {
@@ -845,6 +846,8 @@ nav .fa-solid
 		background-color: black;
 		position: absolute;
 		margin-top: -500px;
+		overflow-x: hidden; /* Blocca lo scroll orizzontale */
+
 		
 	  }
   }
