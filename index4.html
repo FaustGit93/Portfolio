@@ -349,6 +349,7 @@
           updateGroundLevel(p);
           initPlayer(p);
           nextWaveTime = p.millis() + startDelay;
+         
         };
   
         p.draw = function () {
@@ -463,7 +464,7 @@
             setTimeout(() => {
               obstacles.push(new Obstacle(p.width, groundLevel + player.size));
               if (i === amount - 1) {
-                nextWaveTime = p.millis() + 1500;
+                nextWaveTime = p.millis() + 2500;
                 spawning = false;
               }
             }, i * delayBetween);
@@ -474,8 +475,8 @@
           constructor(x, baseY) {
             this.x = x;
             this.baseY = baseY;
-            this.size = 40;
-            this.speed = 5;
+            this.size = 30;
+            this.speed = 4;
           }
   
           update() {
@@ -484,6 +485,8 @@
   
           draw(p) {
             p.fill(255, 0, 0);
+           
+            
             p.triangle(
               this.x, this.baseY,
               this.x + this.size / 2, this.baseY - this.size,
