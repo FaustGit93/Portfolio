@@ -154,7 +154,7 @@ body {
 	padding: 0;
 	overflow: hidden;
 	position: absolute;
-	width: 1200px;
+	width: 100vw;
 	height: 600px;
 	border: 2px solid #ccc;
   }

@@ -338,35 +338,34 @@
       let jumpForce = -15;
       let groundLevel;
       let obstacles = [];
+      let spawnTimer = 0;
+      let startDelay = 2000;
       let nextWaveTime = 0;
+      
       let spawning = false;
-      let spawnDelay = 2500;
-
-      let targetRotation = 130;
-      let rotationSpeed = 15;
 
       const sketch = (p) => {
         p.setup = function () {
           const container = document.getElementById("gd-game-container");
           p.createCanvas(container.offsetWidth, container.offsetHeight).addClass('gd-canvas');
           updateGroundLevel(p);
-          initPlayer();
-          nextWaveTime = p.millis() + 2000;
+          initPlayer(p);
+          nextWaveTime = p.millis() + startDelay;
         };
 
         p.draw = function () {
-          p.background(30);
+          p.background(3);
 
           // Terreno
-          p.fill(50);
+          p.fill(255,0,0,60);
           p.rect(0, groundLevel + player.size, p.width, p.height - groundLevel);
 
-          // Spawn ostacoli random
+          // Gestione spawn ostacoli
           if (p.millis() >= nextWaveTime && !spawning) {
             spawnWave(p);
           }
 
-          // Aggiorna ostacoli
+          // Aggiorna e disegna ostacoli
           for (let i = obstacles.length - 1; i >= 0; i--) {
             obstacles[i].update();
             obstacles[i].draw(p);
@@ -375,7 +374,7 @@
             }
           }
 
-          // Fisica player
+          // Gravità e movimento player
           player.velocityY += gravity;
           player.y += player.velocityY;
 
@@ -385,28 +384,31 @@
             player.isJumping = false;
           }
 
-          // Disegna player (sopra ai triangoli)
+          // Animazione rotazione
           p.push();
-          p.translate(player.x + player.size / 2, player.y + player.size / 2);
+          p.translate(player.x + player.size / 2, player.y + player.size / 2); // Centro del quadrato
 
-          // Rotazione animata
-          if (player.rotationDirection === 1) {
-            player.rotation += rotationSpeed;
-            if (player.rotation >= targetRotation) {
-              player.rotation = targetRotation;
-              player.rotationDirection = -1;
-            }
-          } else if (player.rotationDirection === -1) {
-            player.rotation -= rotationSpeed;
-            if (player.rotation <= 0) {
-              player.rotation = 0;
-              player.rotationDirection = 0;
-            }
-          }
+          // Rotazione fluida
+          const targetRotation = 65; // modifica qui il valore desiderato (es. 45, 180, 270)
+            const rotationSpeed = 10;
 
-          p.rotate(p.radians(player.rotation));
-          p.fill(255, 100, 100);
-          p.rect(-player.size / 2, -player.size / 2, player.size, player.size);
+    if (player.rotationDirection === 1) {
+  player.rotation += rotationSpeed;
+  if (player.rotation >= targetRotation) {
+    player.rotation = targetRotation;
+          player.rotationDirection = -1;
+  }
+} else if (player.rotationDirection === -1) {
+  player.rotation -= rotationSpeed;
+  if (player.rotation <= 0) {
+    player.rotation = 0;
+    player.rotationDirection = 0;
+  }
+}
+
+          p.rotate(p.radians(player.rotation)); // Ruotiamo il quadrato
+          p.fill(255);
+          p.rect(-player.size / 2, -player.size / 2, player.size, player.size); // Quadrato centrato
           p.pop();
         };
 
@@ -415,14 +417,8 @@
         };
 
         p.touchStarted = function () {
-          const touchY = p.touches[0]?.y;
-          const interactiveZoneTop = p.height / 2;
-
-          if (touchY >= interactiveZoneTop) {
-            jump();
-            return false;
-          }
-          return true; // lascia scorrere
+          jump();
+          return false;
         };
 
         p.windowResized = function () {
@@ -436,7 +432,7 @@
           groundLevel = p.height / 2;
         }
 
-        function initPlayer() {
+        function initPlayer(p) {
           player = {
             x: 100,
             y: groundLevel,
@@ -452,25 +448,25 @@
           if (!player.isJumping) {
             player.velocityY = jumpForce;
             player.isJumping = true;
-            player.rotationDirection = 1;
+            player.rotationDirection = 1; // Iniziamo a ruotare verso 180 gradi
           }
         }
 
         function spawnWave(p) {
-          spawning = true;
-          let amount = Math.floor(p.random(1, 4)); // 1, 2 o 3 triangoli
-          let delayBetween = 400;
+  spawning = true;
+  let amount = Math.floor(Math.random() * 3) + 1; // 1–3 ostacoli per wave
+  let delayBetween = 500;
 
-          for (let i = 0; i < amount; i++) {
-            setTimeout(() => {
-              obstacles.push(new Obstacle(p.width, groundLevel + player.size));
-              if (i === amount - 1) {
-                nextWaveTime = p.millis() + spawnDelay;
-                spawning = false;
-              }
-            }, i * delayBetween);
-          }
-        }
+  for (let i = 0; i < amount; i++) {
+    setTimeout(() => {
+      obstacles.push(new Obstacle(p.width, groundLevel + player.size));
+      if (i === amount - 1) {
+        nextWaveTime = p.millis() + 1500;
+        spawning = false;
+      }
+    }, i * delayBetween);
+  }
+}
 
         class Obstacle {
           constructor(x, baseY) {
@@ -485,7 +481,7 @@
           }
 
           draw(p) {
-            p.fill(100, 255, 100);
+            p.fill(255, 0, 0);
             p.triangle(
               this.x, this.baseY,
               this.x + this.size / 2, this.baseY - this.size,
@@ -497,6 +493,16 @@
             return this.x + this.size < 0;
           }
         }
+
+        // Funzione per modificare la rotazione del quadrato dal codice
+        window.setPlayerRotation = function(rotation) {
+          player.rotation = rotation;
+        };
+
+        // Funzione per modificare la direzione della rotazione
+        window.setRotationDirection = function(direction) {
+          player.rotationDirection = direction; // 1 per aumentare, -1 per diminuire
+        };
       };
 
       new p5(sketch, document.getElementById("gd-game-container"));
