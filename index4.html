@@ -338,7 +338,7 @@
       let jumpForce = -15;
       let groundLevel;
       let obstacles = [];
-      let spawnTimer = 1.5;
+      let spawnTimer = 0;
       let startDelay = 2000;
       let nextWaveTime = 0;
       let waveIndex = 0;
@@ -385,10 +385,29 @@
             player.isJumping = false;
           }
 
-          // Disegnare player con rotazione
+          // Animazione rotazione
           p.push();
           p.translate(player.x + player.size / 2, player.y + player.size / 2); // Centro del quadrato
-          p.rotate(p.radians(player.rotation)); // Rotazione di 180 gradi ogni salto
+
+          // Rotazione fluida
+          const targetRotation = 65; // modifica qui il valore desiderato (es. 45, 180, 270)
+            const rotationSpeed = 10;
+
+    if (player.rotationDirection === 1) {
+  player.rotation += rotationSpeed;
+  if (player.rotation >= targetRotation) {
+    player.rotation = targetRotation;
+          player.rotationDirection = -1;
+  }
+} else if (player.rotationDirection === -1) {
+  player.rotation -= rotationSpeed;
+  if (player.rotation <= 0) {
+    player.rotation = 0;
+    player.rotationDirection = 0;
+  }
+}
+
+          p.rotate(p.radians(player.rotation)); // Ruotiamo il quadrato
           p.fill(255, 100, 100);
           p.rect(-player.size / 2, -player.size / 2, player.size, player.size); // Quadrato centrato
           p.pop();
@@ -421,7 +440,8 @@
             size: 40,
             velocityY: 0,
             isJumping: false,
-            rotation: 0
+            rotation: 0,
+            rotationDirection: 0
           };
         }
 
@@ -429,7 +449,7 @@
           if (!player.isJumping) {
             player.velocityY = jumpForce;
             player.isJumping = true;
-            player.rotation += 45; // Modifica a 180 gradi ogni volta che salti
+            player.rotationDirection = 1; // Iniziamo a ruotare verso 180 gradi
           }
         }
 
@@ -474,6 +494,16 @@
             return this.x + this.size < 0;
           }
         }
+
+        // Funzione per modificare la rotazione del quadrato dal codice
+        window.setPlayerRotation = function(rotation) {
+          player.rotation = rotation;
+        };
+
+        // Funzione per modificare la direzione della rotazione
+        window.setRotationDirection = function(direction) {
+          player.rotationDirection = direction; // 1 per aumentare, -1 per diminuire
+        };
       };
 
       new p5(sketch, document.getElementById("gd-game-container"));
