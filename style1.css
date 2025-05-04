@@ -156,13 +156,14 @@ body {
 	position: absolute;
 	width: 100vw;
 	height: 600px;
-	
+	outline: none;
   }
 
   /* Applichiamo questo stile solo al canvas di questo gioco */
   canvas.gd-canvas {
 	display: block;
 	position: absolute;
+	outline: none;
 	top: 0;
 	left: 0;
   }
