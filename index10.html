@@ -18,6 +18,7 @@
     <!-----https://script.google.com/macros/s/AKfycbwk-vbpH_SJFjrexmiQl9piEc8U6StW-7xg4EYMIU-iuVLz2i0ReLtPKDWMqQ10nGd_sg/exec------->
 </head>
 
+
 <body>
 
     <!----- Headers Start --------->
@@ -60,10 +61,26 @@
         <div class="container">
             <div class="row">
                 <div class="about-col-1">
-                    <img src="Images/user_1.jpg" alt="User Image">
+         <!------           <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWR4dGU0djdqN3puZ28zZzd2ZDYydHRqaHQ4Y3N1ejZxaWJlcmN4ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1Y625fMC4jTtMpmyCy/giphy.gif" alt="User Image">   ----->
+     
+
+
+
+         <div class="custom-slideshow" data-id="slideshow2">
+            <div class="custom-slide"><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWt5bDIybnpyM2dhemV6N3Nncm4ybGdiem1nMWhxN24zOTBsY3NobyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/seMipNbQzUlzvIBlTD/giphy.gif"></div>
+            <div class="custom-slide"><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamx3aTJsMjk1cm1pNG0yOW4yNzEyb2Y0YmNpd3Y3OGgxZjZycGFmZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7T8nDW9fNJscXD6s2u/giphy.gif"></div>
+            <div class="custom-slide"><img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnk3emFmNTJleXJhem40b3c2c2hlOWtsbnA5cTJrb3plcGlxcW9oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/D3lEPWaArt1Ff44b9W/giphy.gif"></div>
+
+            <a class="custom-prev">❮</a>
+            <a class="custom-next">❯</a>
+          </div>
+        
+
+
+
                 </div>
                 <div class="about-col-2">
-                    <h1 class="subtitle">Descrizione Servizio</h1>
+                    <h1 class="subtitle">Cosa sono</h1>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada, ligula id condimentum
                         convallis, purus ligula maximus leo, vel lacinia elit nulla vitae justo. Sed hendrerit sapien non
@@ -112,11 +129,17 @@
 
     <!----- // Services   ----->
     <div id="services">
+
+
         <div class="container">
-            <h1 class="subtitle">Services</h1>
+            <h1 class="subtitle">Possibilità</h1>
+       
+              
+
+
             <div class="services-list">
                 <div>
-                    <i class="fa-solid fa-code"></i>
+                    <i class="fa-solid fa-person"></i>
                     <h2>Info 1</h2>
                     <p>
                         Descrizione di due righe/////////////////////////////////
@@ -124,10 +147,11 @@
 
 
                     </p>
+                    
           <!---          <a href="#">Learn more</a>  -->
                 </div>
                 <div>
-                    <i class="fa-solid fa-crop-simple"></i>
+                    <i class="fa-solid fa-hands"></i>
                     <h2>Info 2</h2>
                     <p>
                         Descrizione di tre righe//////////////////////////////////////////////////////
@@ -140,7 +164,7 @@
 
                 </div>
                 <div>
-                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <i class="fa-solid fa-video"></i>
                     <h2>Info 3</h2>
                     <p>
                         Descrizione di quattro righe.........................................................
@@ -153,7 +177,7 @@
 
                 </div>
                 <div>
-                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <i class="fa-solid fa-network-wired"></i>
                     <h2>Info 4</h2>
                     <p>Descrizione di quattro righe.........................................................</p>
                
@@ -201,6 +225,7 @@
                 <div class="work">
                     <img src="Images/work-3.png">
                     <div class="layer">
+                        
                         <h3>Title here</h3>
                         <p>Description instead here</p>
                         <a href="#"><i class="fa-solid fa-link"></i></a>
@@ -210,7 +235,7 @@
 
             </div>
             <!----- // Button   ----->
-            <a href="#" class="btn">See more</a>
+            <a href="#" class="btn">Torna su</a>
 
         </div>
     </div>
@@ -372,7 +397,7 @@ function setup() {
 
 function windowResized() {
 
-    resizeCanvas(400, 4000); // Sempre fisso
+    resizeCanvas(400, 1000); // Sempre fisso
 
 }
 
@@ -467,6 +492,44 @@ function doubleClicked() {
 
 
 <!-------------     Script P5                 -------->
+
+
+
+
+
+
+
+<!----------Script Slides     -->
+<script>
+
+document.querySelectorAll('.custom-slideshow').forEach(slideshow => {
+  let slides = slideshow.querySelectorAll('.custom-slide');
+  let index = 0;
+
+  const showSlide = (n) => {
+    index = (n + slides.length) % slides.length;
+    slides.forEach(slide => slide.style.display = 'none');
+    slides[index].style.display = 'block';
+  };
+
+  // Show the first slide
+  showSlide(index);
+
+  // Event listeners per i pulsanti
+  slideshow.querySelector('.custom-prev').addEventListener('click', () => {
+    showSlide(index - 1);
+  });
+
+  slideshow.querySelector('.custom-next').addEventListener('click', () => {
+    showSlide(index + 1);
+  });
+});
+
+
+</script>
+
+
+
 
 
 

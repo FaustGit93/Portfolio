@@ -42,6 +42,61 @@ body {
 	z-index: 1;
 
 }
+
+
+
+.custom-slideshow {
+	position: relative;
+	max-width: 800px;
+	margin: auto;
+  }
+  
+  .custom-slideshow .custom-slide {
+	display: none;
+  }
+  
+  .custom-slideshow .custom-slide img {
+	width: 100%;
+	vertical-align: middle;
+  }
+  
+  .custom-slideshow .custom-prev,
+  .custom-slideshow .custom-next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	background-color: rgba(0, 0, 0, 0.5);
+	user-select: none;
+	z-index: 10;
+  }
+  
+  .custom-slideshow .custom-prev {
+	left: 0;
+	border-radius: 0 3px 3px 0;
+	transition: background-color 0.3s ease, color 0.3s ease;
+
+  }
+  .custom-slideshow .custom-prev:hover,
+.custom-slideshow .custom-next:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+  
+  .custom-slideshow .custom-next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+  }
+
+
+
+
+
+
 #header1 {
 	width: 100%;
 	height: 100vh;
