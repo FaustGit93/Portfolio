@@ -850,6 +850,54 @@ nav .fa-solid
 
 		
 	  }
+
+	  #renderCanvas {
+		width: 75%;
+		height: 100%;
+		display: block;
+		margin-top: -400px;
+		
+		
+		
+	  }
+	  #renderCanvas:focus {
+		outline: none;
+	  }
+	
+	  .icon-buttons {
+		position: absolute;
+		bottom: 40px;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		gap: 20px;
+		z-index: 10;
+	
+		
+	  }
+	
+	
+	  #model-description {
+		color: rgb(228, 228, 228);
+		font-family: 'SF Pro Display', sans-serif;
+	
+		text-align: center;
+		font-size: 0.9rem;
+		margin-top: 1rem;
+		max-width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -40px;
+		padding: 0.5rem 1rem;
+		background-color: rgba(0, 0, 0, 0);
+		border-radius: 8px;
+		transition: opacity 0.3s ease-in-out;
+		opacity: 1;
+		position: relative;
+		
+	  }
+
+
   }
   
   /* iPad landscape (1024x768) */
@@ -860,6 +908,8 @@ nav .fa-solid
 	  color: white;
 	  padding: 20px;
 	  text-align: center;
+	  overflow-x: hidden; /* Blocca lo scroll orizzontale */
+
 	}
   }
 }
