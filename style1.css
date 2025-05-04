@@ -149,6 +149,25 @@ body {
 
 
  
+  .gd-canvas-container {
+	margin: 0 auto;
+	padding: 0;
+	overflow: hidden;
+	position: absolute;
+	width: 1200px;
+	height: 600px;
+	border: 2px solid #ccc;
+  }
+
+  /* Applichiamo questo stile solo al canvas di questo gioco */
+  canvas.gd-canvas {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+  }
+
+
 
 
   .icon-buttons i {

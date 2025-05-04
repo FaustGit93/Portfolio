@@ -7,6 +7,9 @@
     <title>Fausto Rabatti</title>
     <link rel="stylesheet" href="style1.css">
     <script src="https://kit.fontawesome.com/42a675b1a0.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+
 
     <!-----https://script.google.com/macros/s/AKfycbwk-vbpH_SJFjrexmiQl9piEc8U6StW-7xg4EYMIU-iuVLz2i0ReLtPKDWMqQ10nGd_sg/exec------->
 </head>
@@ -18,7 +21,13 @@
 
 
     <div id="header1">
-        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHhocGp5M3dsNTN3NTJkcTV2a3Fsajl5eWljOTFteWtqanhocHB2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xuWkuYl33i28fIwkBM/giphy.gif" loop="infinite" alt="background animation" class="background-image"/>
+
+
+        <div class="gd-canvas-container" id="gd-game-container"></div>
+
+
+
+    <!-------    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHhocGp5M3dsNTN3NTJkcTV2a3Fsajl5eWljOTFteWtqanhocHB2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xuWkuYl33i28fIwkBM/giphy.gif" loop="infinite" alt="background animation" class="background-image"/>     ----->
         <div class="container">
             <nav>
                 <img src="Images/" class="" alt="">
@@ -317,6 +326,159 @@
   
       </script>
 
+
+
+<!---      Script Geometry Dash         -->
+
+
+<script>
+    (function () {
+      let player;
+      let gravity = 1;
+      let jumpForce = -15;
+      let groundLevel;
+      let obstacles = [];
+      let spawnTimer = 1.5;
+      let startDelay = 2000;
+      let nextWaveTime = 0;
+      let waveIndex = 0;
+      const wavePattern = [2, 1, 3];
+      let spawning = false;
+
+      const sketch = (p) => {
+        p.setup = function () {
+          const container = document.getElementById("gd-game-container");
+          p.createCanvas(container.offsetWidth, container.offsetHeight).addClass('gd-canvas');
+          updateGroundLevel(p);
+          initPlayer(p);
+          nextWaveTime = p.millis() + startDelay;
+        };
+
+        p.draw = function () {
+          p.background(30);
+
+          // Terreno
+          p.fill(50);
+          p.rect(0, groundLevel + player.size, p.width, p.height - groundLevel);
+
+          // Gestione spawn ostacoli
+          if (p.millis() >= nextWaveTime && !spawning) {
+            spawnWave(p);
+          }
+
+          // Aggiorna e disegna ostacoli
+          for (let i = obstacles.length - 1; i >= 0; i--) {
+            obstacles[i].update();
+            obstacles[i].draw(p);
+            if (obstacles[i].offscreen()) {
+              obstacles.splice(i, 1);
+            }
+          }
+
+          // Gravità e movimento player
+          player.velocityY += gravity;
+          player.y += player.velocityY;
+
+          if (player.y >= groundLevel) {
+            player.y = groundLevel;
+            player.velocityY = 0;
+            player.isJumping = false;
+          }
+
+          // Disegnare player con rotazione
+          p.push();
+          p.translate(player.x + player.size / 2, player.y + player.size / 2); // Centro del quadrato
+          p.rotate(p.radians(player.rotation)); // Rotazione di 180 gradi ogni salto
+          p.fill(255, 100, 100);
+          p.rect(-player.size / 2, -player.size / 2, player.size, player.size); // Quadrato centrato
+          p.pop();
+        };
+
+        p.mousePressed = function () {
+          jump();
+        };
+
+        p.touchStarted = function () {
+          jump();
+          return false;
+        };
+
+        p.windowResized = function () {
+          const container = document.getElementById("gd-game-container");
+          p.resizeCanvas(container.offsetWidth, container.offsetHeight);
+          updateGroundLevel(p);
+          if (player) player.y = groundLevel;
+        };
+
+        function updateGroundLevel(p) {
+          groundLevel = p.height / 2;
+        }
+
+        function initPlayer(p) {
+          player = {
+            x: 100,
+            y: groundLevel,
+            size: 40,
+            velocityY: 0,
+            isJumping: false,
+            rotation: 0
+          };
+        }
+
+        function jump() {
+          if (!player.isJumping) {
+            player.velocityY = jumpForce;
+            player.isJumping = true;
+            player.rotation += 45; // Modifica a 180 gradi ogni volta che salti
+          }
+        }
+
+        function spawnWave(p) {
+          spawning = true;
+          let amount = wavePattern[waveIndex];
+          let delayBetween = 400;
+          for (let i = 0; i < amount; i++) {
+            setTimeout(() => {
+              obstacles.push(new Obstacle(p.width, groundLevel + player.size));
+              if (i === amount - 1) {
+                waveIndex = (waveIndex + 1) % wavePattern.length;
+                nextWaveTime = p.millis() + 1500;
+                spawning = false;
+              }
+            }, i * delayBetween);
+          }
+        }
+
+        class Obstacle {
+          constructor(x, baseY) {
+            this.x = x;
+            this.baseY = baseY;
+            this.size = 40;
+            this.speed = 5;
+          }
+
+          update() {
+            this.x -= this.speed;
+          }
+
+          draw(p) {
+            p.fill(100, 255, 100);
+            p.triangle(
+              this.x, this.baseY,
+              this.x + this.size / 2, this.baseY - this.size,
+              this.x + this.size, this.baseY
+            );
+          }
+
+          offscreen() {
+            return this.x + this.size < 0;
+          }
+        }
+      };
+
+      new p5(sketch, document.getElementById("gd-game-container"));
+    })();
+  </script>
 
 
 </body>
