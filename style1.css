@@ -823,6 +823,42 @@ nav .fa-solid
 		font-size: 10px;
 
 	}
+
+
+
+	/* iPad portrait (768x1024) */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+	#ipad-only {
+	  display: block;
+	  background-color: red;
+	  color: white;
+	  padding: 20px;
+	  text-align: center;
+
+
+
+	}
+
+	#drawing-container {
+		width: 768px;
+		height: 1024px;;
+		background-color: black;
+		position: absolute;
+		margin-top: -500px;
+		
+	  }
+  }
+  
+  /* iPad landscape (1024x768) */
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+	#ipad-only {
+	  display: block;
+	  background-color: blue;
+	  color: white;
+	  padding: 20px;
+	  text-align: center;
+	}
+  }
 }
 
 /*/-------- Close Css for small screens*/
