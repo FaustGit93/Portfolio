@@ -96,6 +96,37 @@ body {
   }
 
 
+
+  .controls {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .description {
+    margin-top: -150px;
+    max-width: 600px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
+	margin-left: auto;
+	margin-right: auto;
+  }
+
+  button {
+    padding: 8px 16px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #666;
+  }
+
+
   #drawing-container {
 	width: 2560px;
 	height: 800px;;

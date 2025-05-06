@@ -43,7 +43,7 @@
             <div class="header2-text">
                 <p class="z10"></p>
                 <h1 class="z10">Rendering <span>3D</span><br></h1>
-               
+
 
             </div>
         </div>
@@ -51,15 +51,24 @@
         <div class="icon-buttons">
             <i class="fas fa-arrow-left" onclick="prevModel()" title="Modello precedente"></i>
             <i class="fas fa-arrow-right" onclick="nextModel()" title="Modello successivo"></i>
+
           </div>
 
+
+
+       
+
       <!---  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnIzN25weWljNDM5MDM4Nmt1eWludDJwaWQ2NDNiOHRqenVtd3hnZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEduEwPB9JKgxOsJG/giphy.gif" loop="infinite" alt="background animation" class="background-image" /> ---->
+
+
+
       <canvas id="renderCanvas" style="width: 100%; height: 70%;"></canvas> 
       
       
     </div>
 
 
+    <div id="description" class="description"></div>
 
 
 
@@ -120,6 +129,11 @@
 
     //const models = ["statue.glb", "park.glb", "alessandro_magno.glb","priest_colossal.glb"]; // Modelli disponibili
     const models = ["statue.glb", "statue2.glb","Rock_decimated1.glb"]; // Modelli disponibili
+    const descriptions = [
+  "Statua classica in marmo, rappresenta una figura mitologica.",
+  "Seconda statua, più moderna e stilizzata.",
+  "Roccia scolpita, con dettagli erosi dal tempo."
+];
 
     let currentModelIndex = 0;
     let scene;
@@ -148,13 +162,16 @@
     }
 
     function loadModel(filename) {
-      if (currentModelRoot) currentModelRoot.dispose();
+  if (currentModelRoot) currentModelRoot.dispose();
 
-      BABYLON.SceneLoader.ImportMesh("", "models/", filename, scene, function (meshes) {
-        if (meshes.length > 0) {
-          currentModelRoot = meshes[0].parent || meshes[0];
-        }
-      });
+  BABYLON.SceneLoader.ImportMesh("", "models/", filename, scene, function (meshes) {
+    if (meshes.length > 0) {
+      currentModelRoot = meshes[0].parent || meshes[0];
+    }
+
+    // Mostra la descrizione relativa al modello corrente
+    document.getElementById("description").textContent = descriptions[currentModelIndex];
+  });
     }
 
     function nextModel() {
