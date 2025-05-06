@@ -89,7 +89,7 @@ body {
 	transition: opacity 0.3s ease-in-out;
 	opacity: 1;
 	position: relative;
-	
+	z-index: 10;
   }
 
 
@@ -914,6 +914,7 @@ nav .fa-solid
 		transition: opacity 0.3s ease-in-out;
 		opacity: 1;
 		position: relative;
+		z-index: 10;
 		
 	  }
 
