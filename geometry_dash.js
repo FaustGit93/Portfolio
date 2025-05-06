@@ -131,7 +131,7 @@
         isFlashing: false,
         flashStart: 0,
         flashDuration: 500, // Durata del lampeggio (in millisecondi)
-        flashColor: p.color(200) // Colore del lampeggio (giallo)
+        flashColor: p.color(255,0,0) // Colore del lampeggio (giallo)
       };
     }
 
