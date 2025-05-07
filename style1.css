@@ -104,17 +104,20 @@ body {
   }
 
   .description {
-	margin-top: 120px;
-    max-width: 600px;
-    text-align: center;
-    font-size: 16px;
-    line-height: 1.5;
+	text-align: center;
+	font-size: 0.9rem;
+	margin-top: 1rem;
+	max-width: 500px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: auto;
-	z-index: 10;
+	margin-top: -40px;
+	padding: 0.5rem 1rem;
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 8px;
+	transition: opacity 0.3s ease-in-out;
+	opacity: 1;
 	position: relative;
-	font-family: 'SF Pro Display', sans-serif;
+	z-index: 10;
 
   }
 
