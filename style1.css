@@ -114,6 +114,8 @@ body {
 	margin-top: auto;
 	z-index: 10;
 	position: relative;
+	font-family: 'SF Pro Display', sans-serif;
+
   }
 
   button {
