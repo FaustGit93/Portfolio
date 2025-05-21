@@ -10,7 +10,7 @@ The main goal of this portfolio was to create a **simple**, **clean**, and **vis
 ### Design Approach
 
 - **Simplicity First**  
-  I began by researching minimalist layouts to focus on essential content and usability. The goal was to avoid visual noise and guide the user naturally through the work.
+  I began by researching minimalist layouts to focus on essential content and usability. The goal was to avoid visual noise and guide the user naturally through the page.
 
 - **Color Palette**  
   The colors were chosen to support readability and mood. I tested different combinations to find a palette that felt personal but professional, ensuring enough contrast and harmony.
