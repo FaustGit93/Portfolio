@@ -59,11 +59,17 @@ A key interactive feature of this portfolio is a **3D viewer** that allows users
 - Integrate project filters or categories
 - Add loading indicators and model info overlays in the 3D viewer
 - Improve the tablet layout and responsiveness.
+- English translation
+- Buying a domain .com .design etc.
 
 
 ## 📩 Contact
 
 Feel free to reach out if you have any projects, questions or feedback!
+
+## Donate
+
+https://www.paypal.com/pools/c/9f24PNC0cs
 
 
 
