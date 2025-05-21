@@ -3,7 +3,7 @@
 Welcome to my personal page! This repository showcases my projects developed between 2021 and the 2025 as a Media Designer. 
 My approach is to develop focusing on clarity, minimalism, and user experience.
 
-## 👋 About Me
+## 👋 About me
 
 Hi! I'm **Fausto**, a **Media Designer** and **Creative Developer** with a passion for interaction design and video games.  
 I enjoy building visual experiences that combine design, code, and interactivity — from experimental websites to playful digital environments.  
