@@ -1,7 +1,7 @@
 # Portfolio Website
 
 Welcome to my personal page! This repository showcases my projects developed between 2021 and the 2025 as a Media Designer. 
-My approach as a Designer is to develop focusing on clarity, minimalism, and user experience.
+My approach is to develop focusing on clarity, minimalism, and user experience.
 
 ## 🌱 Concept & Goals
 
