@@ -63,6 +63,6 @@ A key interactive feature of this portfolio is a **3D viewer** that allows users
 
 ## 📩 Contact
 
-Feel free to reach out if you have questions or feedback!
+Feel free to reach out if you have projects, questions or feedback!
 
 
