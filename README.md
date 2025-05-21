@@ -1,6 +1,7 @@
 # Portfolio Website
 
-Welcome to my personal portfolio! This project showcases my skills in web design and front-end development. It was built with a focus on clarity, minimalism, and user experience.
+Welcome to my personal page! This repository showcases my projects developed between 2021 and the 2025 as a Media Designer. 
+My approach as a Designer is to develop focusing on clarity, minimalism, and user experience.
 
 ## 🌱 Concept & Goals
 
@@ -23,7 +24,20 @@ This portfolio was built using:
 
 - **HTML** — for semantic structure  
 - **CSS** — for layout, color, and responsiveness  
-- **JavaScript** — for interactive elements such as menu toggles, transitions, and dynamic content (if any)
+- **JavaScript** — for interactive elements such as Geometry Dash tribute, //toggles// and transitions
+- **Zephyr** — used for photogrammetric reconstruction of 3D models shown in the viewer
+- **Reality Capture** — used for photogrammetric reconstruction of 3D models shown in the viewer
+
+## 🎮 3D Model Viewer
+
+A key interactive feature of this portfolio is a **3D viewer** that allows users to explore models reconstructed using **photogrammetry**.
+
+- Models were created using **3DF Zephyr**, a photogrammetry tool that converts photos into high-quality 3D meshes.
+- These models are exported in `.glb` format and rendered in the browser using **Three.js**.
+- The viewer includes:
+  - Orbit controls (zoom, rotate, pan)
+  - Responsive canvas that adapts to screen size
+  - Optimized loading for lightweight performance
 
 ## 🚀 Features
 
@@ -31,14 +45,7 @@ This portfolio was built using:
 - Smooth transitions and subtle animations  
 - Clear navigation with intuitive user flow  
 - Modular and readable code structure
+- Integrated 3D content to highlight digital craftsmanship
 
-## 📁 Structure Overview
-/portfolio
-├── index.html
-├── /css
-│ └── style.css
-├── /js
-│ └── main.js
-└── /assets
-└── images, icons, fonts
+
 
