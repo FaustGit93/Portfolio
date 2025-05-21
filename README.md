@@ -52,7 +52,7 @@ A key interactive feature of this portfolio is a **3D viewer** that allows users
 - Add light mode support  
 - Integrate project filters or categories
 - Add loading indicators and model info overlays in the 3D viewer
-- I plan to enhance the tablet layout and responsiveness.
+- Improve the tablet layout and responsiveness.
 
 ## 📬 Contact
 
