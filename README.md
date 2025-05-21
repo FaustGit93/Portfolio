@@ -3,7 +3,7 @@
 Welcome to my personal page! This repository showcases my projects developed between 2021 and the 2025 as a Media Designer. 
 My approach is to develop focusing on clarity, minimalism, and user experience.
 
-## 🤔 Concept & Goals
+## 🌱 Concept & Goals
 
 The main goal of this portfolio was to create a **simple**, **clean**, and **visually balanced** interface that communicates effectively without unnecessary complexity.
 
@@ -28,7 +28,7 @@ This portfolio was built using:
 - **Zephyr** — used for photogrammetric reconstruction of 3D models shown in the viewer
 - **Reality Capture** — used for photogrammetric reconstruction of 3D models shown in the viewer
 
-## 🔨 3D Model Viewer
+## 🔍 3D Model Viewer
 
 A key interactive feature of this portfolio is a **3D viewer** that allows users to explore models reconstructed using **photogrammetry**.
 
@@ -39,7 +39,7 @@ A key interactive feature of this portfolio is a **3D viewer** that allows users
   - Responsive canvas that adapts to screen size
   - Optimized loading for lightweight performance
 
-## 🚀 Features
+## 📱 Features
 
 - Responsive design for mobile and desktop  
 - Smooth transitions and subtle animations  
