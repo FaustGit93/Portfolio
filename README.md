@@ -1,4 +1,4 @@
-# Portfolio Website
+# Portfolio - Fausto Rabatti
 
 Welcome to my personal page! This repository showcases my projects developed between 2021 and the 2025 as a Media Designer. 
 My approach is to develop focusing on clarity, minimalism, and user experience.
