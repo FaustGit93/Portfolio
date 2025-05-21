@@ -1,4 +1,4 @@
-# Portfolio
+# Portfolio - Still in development
 
 Welcome to my personal page! This repository showcases my projects developed between 2021 and the 2025 as a Media Designer. 
 My approach is to develop focusing on clarity, minimalism, and user experience.
@@ -63,6 +63,8 @@ A key interactive feature of this portfolio is a **3D viewer** that allows users
 
 ## 📩 Contact
 
-Feel free to reach out if you have projects, questions or feedback!
+Feel free to reach out if you have any projects, questions or feedback!
+
+
 
 
