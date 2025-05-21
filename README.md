@@ -13,7 +13,7 @@ The main goal of this portfolio was to create a **simple**, **clean**, and **vis
   I began by researching minimalist layouts to focus on essential content and usability. The goal was to avoid visual noise and guide the user naturally through the page.
 
 - **Color Palette**  
-  The colors were chosen to support readability and mood. I tested different combinations to find a palette that felt personal but professional, ensuring enough contrast and harmony.
+  The colors were chosen to support readability and mood. I tested different combinations to find a that felt personal but professional, ensuring enough contrast and harmony.
 
 - **Typography & Composition**  
   Attention was paid to spacing, font hierarchy, and layout rhythm to create a balanced and aesthetically pleasing composition.
@@ -22,7 +22,7 @@ The main goal of this portfolio was to create a **simple**, **clean**, and **vis
 
 This portfolio was built using:
 
-- **HTML** — for semantic structure  
+- **HTML** — for structure  
 - **CSS** — for layout, color, and responsiveness  
 - **JavaScript** — for interactive elements such as Geometry Dash tribute, //toggles// and transitions
 - **Zephyr** — used for photogrammetric reconstruction of 3D models shown in the viewer
@@ -32,7 +32,7 @@ This portfolio was built using:
 
 A key interactive feature of this portfolio is a **3D viewer** that allows users to explore models reconstructed using **photogrammetry**.
 
-- Models were created using **3DF Zephyr**, a photogrammetry tool that converts photos into high-quality 3D meshes.
+- Models were created using **3DF Zephyr**, and **Reality Capture** photogrammetry tools that convert photos into high-quality 3D meshes.
 - These models are exported in `.glb` format and rendered in the browser using **Three.js**.
 - The viewer includes:
   - Orbit controls (zoom, rotate, pan)
@@ -47,5 +47,15 @@ A key interactive feature of this portfolio is a **3D viewer** that allows users
 - Modular and readable code structure
 - Integrated 3D content to highlight digital craftsmanship
 
+## 💡 Future Improvements
+
+- Add light mode support  
+- Integrate project filters or categories
+- Add loading indicators and model info overlays in the 3D viewer
+- I plan to enhance the tablet layout and responsiveness.
+
+## 📬 Contact
+
+Feel free to reach out if you have questions or feedback!
 
 
