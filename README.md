@@ -67,7 +67,7 @@ A key interactive feature of this portfolio is a **3D viewer** that allows users
 
 Feel free to reach out if you have any projects, questions or feedback!
 
-## ☕ Buy me a coffe
+## ☕ Buy me a coffee
 
 If you enjoy my projects and want to help me grow as a Media Designer, consider supporting me with a small donation.  
 Even **€2** can make a big difference in upgrading my tools, screens, and creative gear.
