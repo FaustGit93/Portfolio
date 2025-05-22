@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fausto Rabatti</title>
 
-    <link rel="stylesheet" href="style2.css">
-    <script src="https://kit.fontawesome.com/42a675b1a0.js" crossorigin="anonymous"></script>
-
-
+  <link rel="stylesheet" href="style2.css" />
+  <script src="https://kit.fontawesome.com/42a675b1a0.js" crossorigin="anonymous"></script>
 
   <style>
     html, body {
-          height: 1200vh; /* per abilitare lo scroll */
-
+      height: 600vh; /* per abilitare lo scroll */
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
     canvas.threejs-canvas {
       position: fixed;
@@ -28,73 +28,53 @@
 </head>
 <body>
 
-     <div id="header1">
-    <!----- Set any image / gif you want --------->
+  <div id="header1">
     <div class="container">
-        <nav class="navbar">
-            <img src=" class="" alt="">
-
-            <!----- video background implementation  -------->
-            <!-----    video src="/Images/666.mp4" muted loop autoplay></video> -
-
-        <!----- logo disabled  <img src="Images/MY_GLASSES_INSTA.png" class="logo" alt="Logo">  --------->
-            <ul id="sidemenu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">Chi sono</a></li>
-                <li><a href="services.html">Servizi</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="#contact">Contatti</a></li>
-                <!----- side menu icons -------->
-                <i class="fa-solid fa-xmark" onclick="closemenu()" "></i>
-            </ul>
-            <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
-        </nav>
-        <div class="header-text">
-            <p class="z10_1">2025</p>
-            <h1 class="z10_1"><span><br>Grafica</span><br></h1>
-        </div>
+      <nav class="navbar">
+        <img src="" alt="" />
+        <ul id="sidemenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">Chi sono</a></li>
+          <li><a href="services.html">Servizi</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="#contact">Contatti</a></li>
+          <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+        </ul>
+        <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
+      </nav>
+      <div class="header-text">
+        <p class="z10_1">2025</p>
+        <h1 class="z10_1"><span><br>Grafica</span><br></h1>
+      </div>
     </div>
-</div>
-
-
-
-
-
+  </div>
 
   <canvas class="threejs-canvas"></canvas>
 
+  <div id="header1">
+    <div class="container">
+      <nav class="navbar">
+        <img src="" alt="" />
+      </nav>
+      <div class="header-text">
+        <p class="z10_1">2025</p>
+        <h1 class="z10_1"><span><br>Grafica1</span><br></h1>
+      </div>
+    </div>
+  </div>
 
   <div id="header1">
-    <!----- Set any image / gif you want --------->
     <div class="container">
-        <nav class="navbar">
-            <img src=" class="" alt="">
-
-     
-        </nav>
-        <div class="header-text">
-            <p class="z10_1">2025</p>
-            <h1 class="z10_1"><span><br>Grafica</span><br></h1>
-        </div>
+      <div class="header-text">
+        <p class="z10_1">2025</p>
+        <h1 class="z10_1"><span><br>Grafica2</span><br></h1>
+      </div>
     </div>
-</div>
+  </div>
 
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 
-   <div id="header1">
-    <!----- Set any image / gif you want --------->
-    <div class="container">
-      
-        <div class="header-text">
-            <p class="z10_1">2025</p>
-            <h1 class="z10_1"><span><br>Grafica</span><br></h1>
-        </div>
-    </div>
-</div>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-
-  <script>
     const canvas = document.querySelector('.threejs-canvas');
     const scene = new THREE.Scene();
 
@@ -104,7 +84,7 @@
       0.1,
       1000
     );
-    camera.position.z = 2;
+    camera.position.z = 3;
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -114,21 +94,151 @@
     const light = new THREE.HemisphereLight(0xffffff, 0x000000, 1.5);
     scene.add(light);
 
-    // Cubo base
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshStandardMaterial({ color: 0xff6600 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    // Caricamento texture
+    const textureLoader = new THREE.TextureLoader();
+    const textureTriangle = textureLoader.load('https://threejs.org/examples/textures/uv_grid_opengl.jpg'); // esempio
+    const texturePyramid = textureLoader.load('https://threejs.org/examples/textures/brick_diffuse.jpg'); // esempio
+    const textureCube = textureLoader.load('https://threejs.org/examples/textures/crate.gif'); // esempio
+
+    // Materiali con texture
+    const materialTriangle = new THREE.MeshStandardMaterial({
+      map: textureTriangle,
+      side: THREE.DoubleSide,
+      flatShading: true
+    });
+
+    const materialPyramid = new THREE.MeshStandardMaterial({
+      map: texturePyramid,
+      side: THREE.DoubleSide,
+      flatShading: true
+    });
+
+    const materialCube = new THREE.MeshStandardMaterial({
+      map: textureCube,
+      side: THREE.DoubleSide,
+      flatShading: true
+    });
+
+    // Geometria Triangolo Equilatero
+    const l = 2;
+    const h = (Math.sqrt(3) / 2) * l;
+
+    const geometryTriangle = new THREE.BufferGeometry();
+    const triangleVertices = new Float32Array([
+      -l / 2, -h / 3, 0,
+       l / 2, -h / 3, 0,
+       0,     (2 * h) / 3, 0
+    ]);
+    geometryTriangle.setAttribute('position', new THREE.BufferAttribute(triangleVertices, 3));
+
+    // UV per triangolo (aggiunta per texture)
+    const triangleUVs = new Float32Array([
+      0, 0,
+      1, 0,
+      0.5, 1
+    ]);
+    geometryTriangle.setAttribute('uv', new THREE.BufferAttribute(triangleUVs, 2));
+
+    geometryTriangle.computeVertexNormals();
+
+    // Geometria Piramide Equilatera (Tetraedro Regolare)
+    const pyramidVertices = new Float32Array([
+      1,  1,  1,
+     -1, -1,  1,
+     -1,  1, -1,
+      1, -1, -1
+    ]);
+
+    const pyramidIndices = [
+      0, 1, 2,
+      0, 3, 1,
+      0, 2, 3,
+      1, 3, 2
+    ];
+
+    const geometryPyramid = new THREE.BufferGeometry();
+    geometryPyramid.setAttribute('position', new THREE.BufferAttribute(pyramidVertices, 3));
+    geometryPyramid.setIndex(pyramidIndices);
+
+    // UV per piramide (approssimativi)
+    const pyramidUVs = new Float32Array([
+      1, 1,
+      0, 1,
+      0, 0,
+      1, 0
+    ]);
+    geometryPyramid.setAttribute('uv', new THREE.BufferAttribute(pyramidUVs, 2));
+
+    geometryPyramid.computeVertexNormals();
+
+    // Geometria Cubo
+    const geometryCube = new THREE.BoxGeometry(1, 1, 1);
+
+    // Punti di cambio scroll
+    const changeToPyramidAt = window.innerHeight * 1.15;
+    const changeToCubeAt = window.innerHeight * 2.15;
+
+    // Creiamo tutte le mesh
+    const meshTriangle = new THREE.Mesh(geometryTriangle, materialTriangle);
+    const meshPyramid = new THREE.Mesh(geometryPyramid, materialPyramid);
+    const meshCube = new THREE.Mesh(geometryCube, materialCube);
+
+    scene.add(meshTriangle);
+    scene.add(meshPyramid);
+    scene.add(meshCube);
+
+    // Visibilità iniziale
+    meshTriangle.visible = true;
+    meshPyramid.visible = false;
+    meshCube.visible = false;
 
     let scrollY = 0;
     window.addEventListener('scroll', () => {
       scrollY = window.scrollY;
     });
 
+    // Bounce parameters
+    let bounceTime = 0;
+
     function animate() {
       requestAnimationFrame(animate);
-      cube.rotation.y = scrollY * 0.01;
-      cube.rotation.x = scrollY * 0.005;
+
+      // Cambio visibilità in base allo scroll
+      if (scrollY > changeToCubeAt) {
+        meshTriangle.visible = false;
+        meshPyramid.visible = false;
+        meshCube.visible = true;
+      } else if (scrollY > changeToPyramidAt) {
+        meshTriangle.visible = false;
+        meshPyramid.visible = true;
+        meshCube.visible = false;
+      } else {
+        meshTriangle.visible = true;
+        meshPyramid.visible = false;
+        meshCube.visible = false;
+      }
+
+      // Incremento bounce time
+      bounceTime += 0.03;
+      const bounceHeight = Math.sin(bounceTime) * 0.1;
+
+      // Rotazione e bounce mesh visibile
+      if (meshTriangle.visible) {
+        meshTriangle.rotation.y = scrollY * 0.01;
+        meshTriangle.rotation.x = scrollY * 0.005;
+        meshTriangle.position.y = bounceHeight;
+      }
+      if (meshPyramid.visible) {
+        meshPyramid.rotation.y = scrollY * 0.01;
+        meshPyramid.rotation.x = scrollY * 0.005;
+        meshPyramid.position.y = bounceHeight;
+      }
+      if (meshCube.visible) {
+        meshCube.rotation.y = scrollY * 0.01;
+        meshCube.rotation.x = scrollY * 0.005;
+        meshCube.position.y = bounceHeight;
+      }
+
       renderer.render(scene, camera);
     }
 
@@ -141,24 +251,15 @@
     });
   </script>
 
-
-
-
-    <script>
-
-        var sidemenu = document.getElementById("sidemenu");
-        function openmenu() {
-            sidemenu.style.right = "0";
-
-
-        }
-        function closemenu() {
-            sidemenu.style.right = "-200px";
-
-
-        }
-
-    </script>
+  <script>
+    const sidemenu = document.getElementById("sidemenu");
+    function openmenu() {
+      sidemenu.style.right = "0";
+    }
+    function closemenu() {
+      sidemenu.style.right = "-200px";
+    }
+  </script>
 
 </body>
 </html>
