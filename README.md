@@ -3,14 +3,17 @@
 Welcome to my personal page! This repository showcases my projects developed between 2021 and the 2025 as a Media Designer. 
 My approach is to develop focusing on clarity, minimalism, and user experience.
 
-[![Visita il mio portfolio](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzIwd2Zqbm1ucmlmbHQ4bTc2NjhvemVoY29rbW1xbGJ0MHlwMTZqOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nUM4ybsmSPfNsMsN1S/giphy.gif)](https://portfolio-fausto-rabatti.vercel.app/)
 
-Click the image to visit
 ## 👋 About Me
 
 Hi! I'm **Fausto**, a **Media Designer** and **Creative Developer** with a passion for interaction design and video games.  
 I enjoy building visual experiences that combine design, code, and interactivity — from experimental websites to playful digital environments.  
 My work often explores the intersection of aesthetics and function, using both traditional and emerging technologies.
+
+## 👋 About Me
+[![Visita il mio portfolio](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzIwd2Zqbm1ucmlmbHQ4bTc2NjhvemVoY29rbW1xbGJ0MHlwMTZqOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nUM4ybsmSPfNsMsN1S/giphy.gif)](https://portfolio-fausto-rabatti.vercel.app/)
+
+Click the image to learn more
 
 ## 🌱 Concept & Goals
 
