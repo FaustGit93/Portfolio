@@ -9,13 +9,15 @@ html
 
 scroll-behavior: smooth;
 overflow-x: hidden; /* Blocca lo scroll orizzontale */
-
+ height: 200vh; /* abilita scroll */
 
 }
 
 body {
-	background: #000000;
+	background: #545454;
 	color: #ffffff
+	
+  
 
 	
 }
@@ -67,13 +69,19 @@ body {
 	display: flex;
 	gap: 20px;
 	z-index: 10;
+ }
 
+  .threejs-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      z-index: -1;
+    }
 
-	
-
-	
-  }
-
+ 
 
   #model-description {
 	color: rgb(228, 228, 228);

@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="style1.css">
 
         <link rel="icon" type="image/png" href="/Images/LOGO-1-white.png"> 
-
+            <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <script src="https://kit.fontawesome.com/42a675b1a0.js" crossorigin="anonymous"></script>
+   
 
     <!-----https://script.google.com/macros/s/AKfycbwk-vbpH_SJFjrexmiQl9piEc8U6StW-7xg4EYMIU-iuVLz2i0ReLtPKDWMqQ10nGd_sg/exec------->
 </head>
@@ -21,7 +23,13 @@
 
         <div id="header1">
             <!----- Set any image / gif you want --------->
-            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDltdmV1bWUzdXYzcjBicmh5NG1kejV6NXlubWZ1azEycTVseGVkbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JqUFfLZMGRw3e/giphy.gif" loop="infinite" alt="background animation" class="background-image" />
+  <canvas class="threejs-canvas"></canvas>
+
+   
+    <!------        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDltdmV1bWUzdXYzcjBicmh5NG1kejV6NXlubWZ1azEycTVseGVkbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JqUFfLZMGRw3e/giphy.gif" loop="infinite" alt="background animation" class="background-image" />
+
+
+    ----->
             <div class="container">
                 <nav class="navbar">
                     <img src=" class="" alt="">
@@ -42,12 +50,17 @@
                     <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
                 </nav>
                 <div class="header-text">
-                    <p class="z10">Grafica</p>
-                    <h1 class="z10">Statica e <span><br>Animata</span><br></h1>
+               <!---------     <p class="z10">Grafica</p>
+                    <h1 class="z10">Statica e <span><br>Animata</span><br></h1> --->
+
+
                 </div>
             </div>
         </div>
     
+
+
+        
     
         <!-----  Header End ------------>
 
@@ -302,6 +315,8 @@
         }
 
     </script>
+
+      <script src="scroll3D.js"></script>
 
 
 </body>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fausto Rabatti</title>
+
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://kit.fontawesome.com/42a675b1a0.js" crossorigin="anonymous"></script>
+
+
+
+  <style>
+    html, body {
+          height: 1200vh; /* per abilitare lo scroll */
+
+    }
+    canvas.threejs-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+     <div id="header1">
+    <!----- Set any image / gif you want --------->
+    <div class="container">
+        <nav class="navbar">
+            <img src=" class="" alt="">
+
+            <!----- video background implementation  -------->
+            <!-----    video src="/Images/666.mp4" muted loop autoplay></video> -
+
+        <!----- logo disabled  <img src="Images/MY_GLASSES_INSTA.png" class="logo" alt="Logo">  --------->
+            <ul id="sidemenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">Chi sono</a></li>
+                <li><a href="index3.html">Servizi</a></li>
+                <li><a href="index2.html">Portfolio</a></li>
+                <li><a href="#contact">Contatti</a></li>
+                <!----- side menu icons -------->
+                <i class="fa-solid fa-xmark" onclick="closemenu()" "></i>
+            </ul>
+            <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
+        </nav>
+        <div class="header-text">
+            <p class="z10_1">2025</p>
+            <h1 class="z10_1"><span><br>Grafica</span><br></h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+  <canvas class="threejs-canvas"></canvas>
+
+
+  <div id="header1">
+    <!----- Set any image / gif you want --------->
+    <div class="container">
+        <nav class="navbar">
+            <img src=" class="" alt="">
+
+     
+        </nav>
+        <div class="header-text">
+            <p class="z10_1">2025</p>
+            <h1 class="z10_1"><span><br>Grafica</span><br></h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+  <div id="header1">
+    <!----- Set any image / gif you want --------->
+    <div class="container">
+        <nav class="navbar">
+            <img src=" class="" alt="">
+
+     
+        </nav>
+        <div class="header-text">
+            <p class="z10_1">2025</p>
+            <h1 class="z10_1"><span><br>Grafica</span><br></h1>
+        </div>
+    </div>
+</div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+  <script>
+    const canvas = document.querySelector('.threejs-canvas');
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 2;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Luce ambientale
+    const light = new THREE.HemisphereLight(0xffffff, 0x000000, 1.5);
+    scene.add(light);
+
+    // Cubo base
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshStandardMaterial({ color: 0xff6600 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    let scrollY = 0;
+    window.addEventListener('scroll', () => {
+      scrollY = window.scrollY;
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      cube.rotation.y = scrollY * 0.01;
+      cube.rotation.x = scrollY * 0.005;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+
+
+
+
+    <script>
+
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu() {
+            sidemenu.style.right = "0";
+
+
+        }
+        function closemenu() {
+            sidemenu.style.right = "-200px";
+
+
+        }
+
+    </script>
+
+</body>
+</html>

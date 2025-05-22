@@ -42,6 +42,11 @@ body {
 	z-index: 1;
 
 }
+.z10_1 {
+	position: relative;
+	z-index: 4;
+
+}
 
 
 
@@ -160,7 +165,9 @@ nav {
 	justify-content: space-between;
 	position: relative;
 	flex-wrap: wrap;
+	z-index: 6;
 }
+
 
 .logo
 {
