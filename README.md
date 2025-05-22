@@ -3,8 +3,9 @@
 Welcome to my personal page! This repository showcases my projects developed between 2021 and the 2025 as a Media Designer. 
 My approach is to develop focusing on clarity, minimalism, and user experience.
 
-Click here ti visit:
-https://portfolio-fausto-rabatti.vercel.app/
+[![Visita il mio portfolio](https://tuo-hosting.com/preview-portfolio.png)](https://portfolio-fausto-rabatti.vercel.app/)
+
+Clicca sull'immagine per visitare la mia [pagina portfolio](https://portfolio-fausto-rabatti.vercel.app/).
 
 ## 👋 About Me
 
