@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fausto Rabatti</title>
-    <link rel="stylesheet" href="style1.css">
+   
+
+    <link rel="stylesheet" href="/style/style4.css">
 
 
         <link rel="icon" type="image/png" href="/Images/LOGO-1-white.png"> 
@@ -37,10 +39,10 @@
 
                 <!-----   <ul id="sidemenu"> ------------>
                 <ul id="sidemenu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">Chi sono</a></li>
-                    <li><a href="services.html">Servizi</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/index.html#about">Chi sono</a></li>
+                    <li><a href="/pages/services.html">Servizi</a></li>
+                    <li><a href="/pages/portfolio.html">Portfolio</a></li>
                     <li><a href="#contact">Contatti</a></li>
                     <i class="fa-solid fa-xmark" onclick="closemenu()" "></i>
                 </ul>
@@ -170,7 +172,7 @@
     function loadModel(filename) {
   if (currentModelRoot) currentModelRoot.dispose();
 
-  BABYLON.SceneLoader.ImportMesh("", "models/", filename, scene, function (meshes) {
+  BABYLON.SceneLoader.ImportMesh("", "../models/", filename, scene, function (meshes) {
     if (meshes.length > 0) {
       currentModelRoot = meshes[0].parent || meshes[0];
     }

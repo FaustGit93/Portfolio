@@ -3,62 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!--------  <meta name="viewport" content="width=device-width, initial-scale=1.0">    ------>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fausto Rabatti</title>
-    <link rel="stylesheet" href="style1.css">
+   
 
-        <link rel="icon" type="image/png" href="/Images/LOGO-1-white.png"> 
+    <link rel="stylesheet" href="/style/style1.css">
 
+    <link rel="icon" type="image/png" href="/Images/LOGO-1-white.png"> 
 
 
     <script src="https://kit.fontawesome.com/42a675b1a0.js" crossorigin="anonymous"></script>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-
-
     <!-----https://script.google.com/macros/s/AKfycbwk-vbpH_SJFjrexmiQl9piEc8U6StW-7xg4EYMIU-iuVLz2i0ReLtPKDWMqQ10nGd_sg/exec------->
 </head>
 
-
 <body>
 
-    <!----- Headers Start --------->
+   <!----- Headers Start --------->
 
-    
 
-    <div id="header1">
-    <!------    <img src="Images/666.gif" loop="infinite" alt="background animation" class="background-image" />   ---->
-        <div class="container">
 
-         
-            <nav>
-                <img src="Images/" class="" alt="">
+   <div id="header1">
+    <!----- Set any image / gif you want --------->
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmoyN3BjMW16bmoxaDR5bjZlYm5pY3BvZnZ3djBmZmQyY2M2dHdxaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/seMipNbQzUlzvIBlTD/giphy.gif" loop="infinite" alt="background animation" class="background-image" />
+    <div class="container">
+        <nav class="navbar">
+            <img src=" class="" alt="">
+
+            <!----- video background implementation  -------->
+            <!-----    video src="/Images/666.mp4" muted loop autoplay></video> -
+
+        <!----- logo disabled  <img src="Images/MY_GLASSES_INSTA.png" class="logo" alt="Logo">  --------->
+            <ul id="sidemenu">
               
-                <!-----   <ul id="sidemenu"> ------------>
-                <ul id="sidemenu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">Chi sono</a></li>
-                    <li><a href="services.html">Servizi</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="#contact">Contatti</a></li>
-                    <i class="fa-solid fa-xmark" onclick="closemenu()" "></i>
-                </ul>
-                <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
-            </nav>
-            <div class="header2-text">
-                <p class="z10"></p>
-                <h1 class="z10">Installazioni <span>Interattive </span><br></h1>
-            
-            </div>
-            <div id="drawing-container"></div>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">Chi sono</a></li>
+                <li><a href="index3.html">Servizi</a></li>
+                <li><a href="index2.html">Portfolio</a></li>
+                <li><a href="#contact">Contatti</a></li>
 
+                <!----- side menu icons -------->
+                <i class="fa-solid fa-xmark" onclick="closemenu()" "></i>
+            </ul>
+            <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
+        </nav>
+        <div class="header2-text">
+            
+            <p class="z10">2024</p>
+            <h1 class="z10">Once Upon a<span><br>Planet</span><br></h1>
         </div>
     </div>
-    <!-----  Header End ------------>
+</div>
+<!-----  Header End ------------>
 
 
 
@@ -66,26 +62,10 @@
         <div class="container">
             <div class="row">
                 <div class="about-col-1">
-         <!------           <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWR4dGU0djdqN3puZ28zZzd2ZDYydHRqaHQ4Y3N1ejZxaWJlcmN4ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1Y625fMC4jTtMpmyCy/giphy.gif" alt="User Image">   ----->
-     
-
-
-
-         <div class="custom-slideshow" data-id="slideshow2">
-            <div class="custom-slide"><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWt5bDIybnpyM2dhemV6N3Nncm4ybGdiem1nMWhxN24zOTBsY3NobyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/seMipNbQzUlzvIBlTD/giphy.gif"></div>
-            <div class="custom-slide"><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamx3aTJsMjk1cm1pNG0yOW4yNzEyb2Y0YmNpd3Y3OGgxZjZycGFmZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7T8nDW9fNJscXD6s2u/giphy.gif"></div>
-            <div class="custom-slide"><img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnk3emFmNTJleXJhem40b3c2c2hlOWtsbnA5cTJrb3plcGlxcW9oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/D3lEPWaArt1Ff44b9W/giphy.gif"></div>
-
-            <a class="custom-prev">❮</a>
-            <a class="custom-next">❯</a>
-          </div>
-        
-
-
-
+                    <img src="Images/user_1.jpg" alt="User Image">
                 </div>
                 <div class="about-col-2">
-                    <h1 class="subtitle">Cosa sono</h1>
+                    <h1 class="subtitle">Descrizione Servizio</h1>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada, ligula id condimentum
                         convallis, purus ligula maximus leo, vel lacinia elit nulla vitae justo. Sed hendrerit sapien non
@@ -134,17 +114,11 @@
 
     <!----- // Services   ----->
     <div id="services">
-
-
         <div class="container">
-            <h1 class="subtitle">Possibilità</h1>
-       
-              
-
-
+            <h1 class="subtitle">Services</h1>
             <div class="services-list">
                 <div>
-                    <i class="fa-solid fa-person"></i>
+                    <i class="fa-solid fa-code"></i>
                     <h2>Info 1</h2>
                     <p>
                         Descrizione di due righe/////////////////////////////////
@@ -152,11 +126,10 @@
 
 
                     </p>
-                    
-          <!---          <a href="#">Learn more</a>  -->
+              <!-----      <a href="#">Learn more</a>  -->
                 </div>
                 <div>
-                    <i class="fa-solid fa-hands"></i>
+                    <i class="fa-solid fa-crop-simple"></i>
                     <h2>Info 2</h2>
                     <p>
                         Descrizione di tre righe//////////////////////////////////////////////////////
@@ -164,32 +137,29 @@
                         a
                         a
                     </p>
-                  
-          <!---          <a href="#">Learn more</a>  -->
+                    
+                                  <!-----      <a href="#">Learn more</a>  -->
 
                 </div>
                 <div>
-                    <i class="fa-solid fa-video"></i>
+                    <i class="fa-solid fa-puzzle-piece"></i>
                     <h2>Info 3</h2>
                     <p>
                         Descrizione di quattro righe.........................................................
 
 
                     </p>
-                  
-
-          <!---          <a href="#">Learn more</a>  -->
-
+                   <!-----      <a href="#">Learn more</a>  -->
                 </div>
                 <div>
-                    <i class="fa-solid fa-network-wired"></i>
+                    <i class="fa-solid fa-puzzle-piece"></i>
                     <h2>Info 4</h2>
                     <p>Descrizione di quattro righe.........................................................</p>
-               
-                           <!---          <a href="#">Learn more</a>  -->   
+                
+  <!-----      <a href="#">Learn more</a>  -->
 
                 </div>
-          <!---      <button type="submit" class="btn btn1">See more</button>  -->
+        <!---        <button type="submit" class="btn btn1">See more</button>  -->
 
             </div>
         </div>
@@ -230,7 +200,6 @@
                 <div class="work">
                     <img src="Images/work-3.png">
                     <div class="layer">
-                        
                         <h3>Title here</h3>
                         <p>Description instead here</p>
                         <a href="#"><i class="fa-solid fa-link"></i></a>
@@ -240,16 +209,23 @@
 
             </div>
             <!----- // Button   ----->
-            <a href="#" class="btn">Torna su</a>
+        <!-----    <a href="#" class="btn">Torna su</a>   ----->
 
         </div>
     </div>
-   
+    <!----- // Contact   ----->
+    <!----- // Contact left  ----->
 
-          <!----- // Contact   ----->
-                    <!----- // Contact left  ----->
+  <div class="iframe-container">
+    <iframe class="game-frame" frameborder="0" src="https://itch.io/embed-upload/13637564?color=000000">
+<!-------      <a href="https://faustgit93.itch.io/once-upon-a-planet">Play Once Upon a Planet on itch.io</a>   ----->
+    </iframe>
+  </div>
 
-                    <div id="contact">
+
+
+
+<div id="contact">
                         <div class=" container">
                             <div class="row">
                                 <div class="contact-left">
@@ -296,12 +272,6 @@
 
                         </div>
 
-                  
-                    
-
-                    </div>
-
-
 
 
 
@@ -340,36 +310,6 @@
         }
 
     </script>
-
-<!-------------     Script P5                 -------->
-
-
-<script src = "drawing.js"></script>
-
-
-
-
-
-
-
-<!-------------     Script P5                 -------->
-
-
-
-
-
-
-
-<!----------Script Slides     -->
-<script src ="slides_show.js">
-
-
-
-</script>
-
-
-
-
 
 
 </body>

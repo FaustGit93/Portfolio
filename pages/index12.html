@@ -1,55 +1,71 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Fausto Rabatti</title>
+  
 
-    <link rel="stylesheet" href="style1.css">
 
+    <link rel="stylesheet" href="/style/style1.css">
 
-    <link rel="icon" type="image/png" href="/Images/LOGO-1-white.png"> 
-
+        <link rel="icon" type="image/png" href="/Images/LOGO-1-white.png"> 
+            <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <script src="https://kit.fontawesome.com/42a675b1a0.js" crossorigin="anonymous"></script>
+   
 
     <!-----https://script.google.com/macros/s/AKfycbwk-vbpH_SJFjrexmiQl9piEc8U6StW-7xg4EYMIU-iuVLz2i0ReLtPKDWMqQ10nGd_sg/exec------->
 </head>
 
 <body>
 
-    <!----- Headers Start --------->
+        <!----- Headers Start --------->
+
+        <div id="header1">
+            <!----- Set any image / gif you want --------->
+  <canvas class="threejs-canvas"></canvas>
+
+   
+    <!------        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDltdmV1bWUzdXYzcjBicmh5NG1kejV6NXlubWZ1azEycTVseGVkbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JqUFfLZMGRw3e/giphy.gif" loop="infinite" alt="background animation" class="background-image" />
 
 
+    ----->
+            <div class="container">
+                <nav class="navbar">
+                    <img src=" class="" alt="">
+    
+                    <!----- video background implementation  -------->
+                    <!-----    video src="/Images/666.mp4" muted loop autoplay></video> -
+    
+                <!----- logo disabled  <img src="Images/MY_GLASSES_INSTA.png" class="logo" alt="Logo">  --------->
+                    <ul id="sidemenu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">Chi sono</a></li>
+                        <li><a href="index3.html">Servizi</a></li>
+                        <li><a href="index2.html">Portfolio</a></li>
+                        <li><a href="#contact">Contatti</a></li>
+                        <!----- side menu icons -------->
+                        <i class="fa-solid fa-xmark" onclick="closemenu()" "></i>
+                    </ul>
+                    <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
+                </nav>
+                <div class="header-text">
+               <!---------     <p class="z10">Grafica</p>
+                    <h1 class="z10">Statica e <span><br>Animata</span><br></h1> --->
 
-    <div id="header1">
-  <!---      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXM3dHJjZGR3eXRzYTBwb280aG9oaXJvc2h3cWNvbDQyanM4a3lpbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/M0l3KOk8KXOOk/giphy.gif" loop="infinite" alt="background animation" class="background-image"/> -->
 
-    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTR3aG44MGhtMm15YXBjZzF3dHZzb3NlcDJzeHowbWhlMzgyMW83cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dzR22f29NOx8oWSwtr/giphy.gif" loop="infinite" alt="background animation" class="background-image"/> 
-        <div class="container">
-            <nav>
-                <img src="Images/" class="" alt="">
-
-                <!-----   <ul id="sidemenu"> ------------>
-                <ul id="sidemenu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">Chi sono</a></li>
-                    <li><a href="services.html">Servizi</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <i class="fa-solid fa-xmark" onclick="closemenu()" "></i>
-                </ul>
-                <i class="fa-solid fa-bars-staggered" onclick="openmenu()"></i>
-            </nav>
-            <div class="header2-text">
-                <p class="z10"></p>
-                <h1 class="z10">Video <span>Editing</span><br></h1>
+                </div>
             </div>
         </div>
-    </div>
-    <!-----  Header End ------------>
+    
+
+
+        
+    
+        <!-----  Header End ------------>
 
 
 
@@ -113,7 +129,7 @@
             <h1 class="subtitle">Services</h1>
             <div class="services-list">
                 <div>
-                    <i class="fa-solid fa-camera"></i>
+                    <i class="fa-solid fa-code"></i>
                     <h2>Info 1</h2>
                     <p>
                         Descrizione di due righe/////////////////////////////////
@@ -121,10 +137,10 @@
 
 
                     </p>
-                  <!---  <a href="#">Learn more</a> -->
+             <!---       <a href="#">Learn more</a> -->
                 </div>
                 <div>
-                    <i class="fa-solid fa-scissors"></i>
+                    <i class="fa-solid fa-crop-simple"></i>
                     <h2>Info 2</h2>
                     <p>
                         Descrizione di tre righe//////////////////////////////////////////////////////
@@ -132,26 +148,31 @@
                         a
                         a
                     </p>
-             <!---       <a href="#">Learn more</a> -->
+                 
+      <!---       <a href="#">Learn more</a> -->
+
                 </div>
                 <div>
-                    <i class="fa-solid fa-paint-roller"></i>
+                    <i class="fa-solid fa-puzzle-piece"></i>
                     <h2>Info 3</h2>
                     <p>
                         Descrizione di quattro righe.........................................................
 
 
                     </p>
-             <!----       <a href="#">Learn more</a> -->
-                </div>
-                <div>
-                    <i class="fa-solid fa-truck"></i>
-                    <h2>Info 4</h2>
-                    <p>Descrizione di quattro righe.........................................................</p>
-                    
-                <!----       <a href="#">Learn more</a> -->    
+                 
+      <!---       <a href="#">Learn more</a> -->
 
                 </div>
+                <div>
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <h2>Info 4</h2>
+                    <p>Descrizione di quattro righe.........................................................</p>
+               
+                          <!---       <a href="#">Learn more</a> -->
+
+                </div>
+      <!---  <button type="submit" class="btn btn1">See more</button>   -->          
 
             </div>
         </div>
@@ -201,14 +222,14 @@
 
             </div>
             <!----- // Button   ----->
-            <a href="#" class="btn">See more</a>
+            <a href="#" class="btn">Torna su</a>
 
         </div>
     </div>
-   
+  
 
 
-              <!----- // Contact   ----->
+          <!----- // Contact   ----->
                     <!----- // Contact left  ----->
 
                     <div id="contact">
@@ -263,11 +284,6 @@
 
                     </div>
 
-
-
-
-
-    </div>
     <!----- // Script change tab   ----->
     <script>
         var tablinks = document.getElementsByClassName("tab-links");
@@ -302,6 +318,8 @@
         }
 
     </script>
+
+      <script src="scroll3D.js"></script>
 
 
 </body>
