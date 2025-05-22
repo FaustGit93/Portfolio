@@ -232,6 +232,20 @@ body {
   }
 
 
+   .iframe-container {
+      width: 100%;
+      max-width: 720px;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    .game-frame {
+      width: 100%;
+      aspect-ratio: 720 / 490;
+      border: none;
+      display: block;
+    }
+
 
 
   .icon-buttons i {
@@ -839,6 +853,9 @@ nav .fa-solid
 		.header1-text h1 {
 			font-size: 28px;
 		}
+
+
+		
 	#header2 
 	{
 
