@@ -13,7 +13,7 @@
 
   <style>
     html, body {
-      height: 600vh; /* per abilitare lo scroll */
+      height: 320vh; /* per abilitare lo scroll */
       margin: 0;
       padding: 0;
       overflow-x: hidden;
@@ -26,6 +26,7 @@
       height: 100vh;
       display: block;
       z-index: 3;
+      scrollbar-width: none;
     }
   </style>
 </head>
@@ -78,6 +79,57 @@
       </div>
     </div>
   </div>
+
+<!----- // Contact   ----->
+                    <!----- // Contact left  ----->
+
+                    <div id="contact">
+                        <div class=" container">
+                            <div class="row">
+                                <div class="contact-left">
+                                    <h1 class="subtitle subtitle3">Contattami</h1>
+                                    <p><i class="fa-solid fa-paper-plane"></i> <a class="btnphone" href="mailto:fausto.rabatti@email.com">fausto.rabatti@gmail.com</a></p>
+                                    <p><i class="fa-solid fa-phone"></i><a class="btnphone" href="https://wa.me/3248661727"target="_blank">3248661727</a></p>
+                                    <div class="social-icons">
+                                        <a href="https://www.facebook.com/fausto.rabatti.1/?locale=it_IT"><i class="fa-brands fa-facebook"></i></a>
+                                    <!---    <a href=""><i class="fa-brands fa-twitter"></i></a>  -->
+                                        <a href="https://www.instagram.com/fah.rahb/"><i class="fa-brands fa-instagram"></i></a>
+                                        <a href="https://www.linkedin.com/in/fausto-rabatti-758404223/"><i class="fa-brands fa-linkedin"></i></a>
+
+                                    </div>
+
+                                    <!----- //file download button (optional) ----->
+                                    <!----- <a href="Images/work-3.png" download class="btn btn2">Download</a> ----->
+                                </div>
+
+                                <!----- // Contact right  ----->
+                                <!---
+                                <div class="contact-right">
+                                    <form>
+                                        <input type="text" name="Name" placeholder="Your Name" required>
+                                        <input type="email" name="email" placeholder="Your E-mail" required>
+                                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                                        <button type="submit" class="btn btn2">Submit</button>
+                                    </form>
+                                </div>
+                                ---->
+                          
+                            </div>
+
+                        </div>
+
+
+
+                   
+
+                        <!----- // Foot - Copyright  ----->
+                        <div class="copyright">
+
+                            <p><i class="fa-regular fa-copyright"></i>All rights reserved</p>
+
+
+                        </div>
+
 
  <script type="module">
   import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
@@ -154,8 +206,8 @@
 
   const geometryCube = new THREE.BoxGeometry(1, 1, 1);
 
-  const changeToPyramidAt = window.innerHeight * 1.15;
-  const changeToCubeAt = window.innerHeight * 2.15;
+  const changeToPyramidAt = window.innerHeight * 0.9;
+  const changeToCubeAt = window.innerHeight * 1.9;
 
   const meshTriangle = new THREE.Mesh(geometryTriangle, materialTriangle);
   const meshPyramid = new THREE.Mesh(geometryPyramid, materialPyramid);
@@ -212,6 +264,9 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 </script>
+
+
+
 
    <script>
 
