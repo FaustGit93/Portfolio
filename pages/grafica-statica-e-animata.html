@@ -24,7 +24,7 @@
       width: 100vw;
       height: 100vh;
       display: block;
-      z-index: 1;
+      z-index: 3;
     }
   </style>
 </head>
@@ -46,7 +46,11 @@
       </nav>
       <div class="header-text">
         <p class="z10_1">2025</p>
-        <h1 class="z10_1"><span><br>Grafica</span><br></h1>
+        <h1 class="z10_1">Grafica</span><br><span>Classica</span></h1>
+      
+         <!-------       <h1 class="z10_1"><span><br>Antica</span><br></h1>   ----->
+              
+
       </div>
     </div>
   </div>
@@ -74,194 +78,156 @@
     </div>
   </div>
 
-  <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+ <script type="module">
+  import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 
-    const canvas = document.querySelector('.threejs-canvas');
-    const scene = new THREE.Scene();
+  const canvas = document.querySelector('.threejs-canvas');
+  const scene = new THREE.Scene();
 
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    camera.position.z = 3;
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
+  camera.position.z = 3;
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+
+  const light = new THREE.HemisphereLight(0xffffff, 0x000000, 1.5);
+  scene.add(light);
+
+  // Caricamento texture dalla cartella locale "textures"
+  const textureLoader = new THREE.TextureLoader();
+  const textureTriangle = textureLoader.load('/textures/gutenberg.jpeg');
+  const texturePyramid  = textureLoader.load('/textures/beethoven_1.jpg');
+  const textureCube     = textureLoader.load('/textures/Companion_cube.jpg');
+
+  const materialTriangle = new THREE.MeshStandardMaterial({
+    map: textureTriangle,
+    side: THREE.DoubleSide,
+    flatShading: true
+  });
+
+  const materialPyramid = new THREE.MeshStandardMaterial({
+    map: texturePyramid,
+    side: THREE.DoubleSide,
+    flatShading: true
+  });
+
+  const materialCube = new THREE.MeshStandardMaterial({
+    map: textureCube,
+    side: THREE.DoubleSide,
+    flatShading: true
+  });
+
+  const l = 2;
+  const h = (Math.sqrt(3) / 2) * l;
+
+  const geometryTriangle = new THREE.BufferGeometry();
+  const triangleVertices = new Float32Array([
+    -l / 2, -h / 3, 0,
+     l / 2, -h / 3, 0,
+     0,     (2 * h) / 3, 0
+  ]);
+  geometryTriangle.setAttribute('position', new THREE.BufferAttribute(triangleVertices, 3));
+  const triangleUVs = new Float32Array([ 0, 0, 1, 0, 0.5, 1 ]);
+  geometryTriangle.setAttribute('uv', new THREE.BufferAttribute(triangleUVs, 2));
+  geometryTriangle.computeVertexNormals();
+
+  const pyramidVertices = new Float32Array([
+    1,  1,  1,
+   -1, -1,  1,
+   -1,  1, -1,
+    1, -1, -1
+  ]);
+  const pyramidIndices = [ 0,1,2, 0,3,1, 0,2,3, 1,3,2 ];
+  const geometryPyramid = new THREE.BufferGeometry();
+  geometryPyramid.setAttribute('position', new THREE.BufferAttribute(pyramidVertices, 3));
+  geometryPyramid.setIndex(pyramidIndices);
+  const pyramidUVs = new Float32Array([ 1,1, 0,1, 0,0, 1,0 ]);
+  geometryPyramid.setAttribute('uv', new THREE.BufferAttribute(pyramidUVs, 2));
+  geometryPyramid.computeVertexNormals();
+
+  const geometryCube = new THREE.BoxGeometry(1, 1, 1);
+
+  const changeToPyramidAt = window.innerHeight * 1.15;
+  const changeToCubeAt = window.innerHeight * 2.15;
+
+  const meshTriangle = new THREE.Mesh(geometryTriangle, materialTriangle);
+  const meshPyramid = new THREE.Mesh(geometryPyramid, materialPyramid);
+  const meshCube = new THREE.Mesh(geometryCube, materialCube);
+
+  scene.add(meshTriangle, meshPyramid, meshCube);
+  meshTriangle.visible = true;
+  meshPyramid.visible = false;
+  meshCube.visible = false;
+
+  let scrollY = 0;
+  window.addEventListener('scroll', () => {
+    scrollY = window.scrollY;
+  });
+
+  let bounceTime = 0;
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    if (scrollY > changeToCubeAt) {
+      meshTriangle.visible = false;
+      meshPyramid.visible = false;
+      meshCube.visible = true;
+    } else if (scrollY > changeToPyramidAt) {
+      meshTriangle.visible = false;
+      meshPyramid.visible = true;
+      meshCube.visible = false;
+    } else {
+      meshTriangle.visible = true;
+      meshPyramid.visible = false;
+      meshCube.visible = false;
+    }
+
+    bounceTime += 0.03;
+    const bounceHeight = Math.sin(bounceTime) * 0.1;
+
+    for (const mesh of [meshTriangle, meshPyramid, meshCube]) {
+      if (mesh.visible) {
+        mesh.rotation.y = scrollY * 0.01;
+        mesh.rotation.x = scrollY * 0.005;
+        mesh.position.y = bounceHeight;
+      }
+    }
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+  });
+</script>
 
-    // Luce ambientale
-    const light = new THREE.HemisphereLight(0xffffff, 0x000000, 1.5);
-    scene.add(light);
+   <script>
 
-    // Caricamento texture
-    const textureLoader = new THREE.TextureLoader();
-    const textureTriangle = textureLoader.load('https://threejs.org/examples/textures/uv_grid_opengl.jpg'); // esempio
-    const texturePyramid = textureLoader.load('https://threejs.org/examples/textures/brick_diffuse.jpg'); // esempio
-    const textureCube = textureLoader.load('https://threejs.org/examples/textures/crate.gif'); // esempio
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu() {
+            sidemenu.style.right = "0";
 
-    // Materiali con texture
-    const materialTriangle = new THREE.MeshStandardMaterial({
-      map: textureTriangle,
-      side: THREE.DoubleSide,
-      flatShading: true
-    });
 
-    const materialPyramid = new THREE.MeshStandardMaterial({
-      map: texturePyramid,
-      side: THREE.DoubleSide,
-      flatShading: true
-    });
+        }
+        function closemenu() {
+            sidemenu.style.right = "-200px";
 
-    const materialCube = new THREE.MeshStandardMaterial({
-      map: textureCube,
-      side: THREE.DoubleSide,
-      flatShading: true
-    });
 
-    // Geometria Triangolo Equilatero
-    const l = 2;
-    const h = (Math.sqrt(3) / 2) * l;
+        }
 
-    const geometryTriangle = new THREE.BufferGeometry();
-    const triangleVertices = new Float32Array([
-      -l / 2, -h / 3, 0,
-       l / 2, -h / 3, 0,
-       0,     (2 * h) / 3, 0
-    ]);
-    geometryTriangle.setAttribute('position', new THREE.BufferAttribute(triangleVertices, 3));
+    </script>
 
-    // UV per triangolo (aggiunta per texture)
-    const triangleUVs = new Float32Array([
-      0, 0,
-      1, 0,
-      0.5, 1
-    ]);
-    geometryTriangle.setAttribute('uv', new THREE.BufferAttribute(triangleUVs, 2));
-
-    geometryTriangle.computeVertexNormals();
-
-    // Geometria Piramide Equilatera (Tetraedro Regolare)
-    const pyramidVertices = new Float32Array([
-      1,  1,  1,
-     -1, -1,  1,
-     -1,  1, -1,
-      1, -1, -1
-    ]);
-
-    const pyramidIndices = [
-      0, 1, 2,
-      0, 3, 1,
-      0, 2, 3,
-      1, 3, 2
-    ];
-
-    const geometryPyramid = new THREE.BufferGeometry();
-    geometryPyramid.setAttribute('position', new THREE.BufferAttribute(pyramidVertices, 3));
-    geometryPyramid.setIndex(pyramidIndices);
-
-    // UV per piramide (approssimativi)
-    const pyramidUVs = new Float32Array([
-      1, 1,
-      0, 1,
-      0, 0,
-      1, 0
-    ]);
-    geometryPyramid.setAttribute('uv', new THREE.BufferAttribute(pyramidUVs, 2));
-
-    geometryPyramid.computeVertexNormals();
-
-    // Geometria Cubo
-    const geometryCube = new THREE.BoxGeometry(1, 1, 1);
-
-    // Punti di cambio scroll
-    const changeToPyramidAt = window.innerHeight * 1.15;
-    const changeToCubeAt = window.innerHeight * 2.15;
-
-    // Creiamo tutte le mesh
-    const meshTriangle = new THREE.Mesh(geometryTriangle, materialTriangle);
-    const meshPyramid = new THREE.Mesh(geometryPyramid, materialPyramid);
-    const meshCube = new THREE.Mesh(geometryCube, materialCube);
-
-    scene.add(meshTriangle);
-    scene.add(meshPyramid);
-    scene.add(meshCube);
-
-    // Visibilità iniziale
-    meshTriangle.visible = true;
-    meshPyramid.visible = false;
-    meshCube.visible = false;
-
-    let scrollY = 0;
-    window.addEventListener('scroll', () => {
-      scrollY = window.scrollY;
-    });
-
-    // Bounce parameters
-    let bounceTime = 0;
-
-    function animate() {
-      requestAnimationFrame(animate);
-
-      // Cambio visibilità in base allo scroll
-      if (scrollY > changeToCubeAt) {
-        meshTriangle.visible = false;
-        meshPyramid.visible = false;
-        meshCube.visible = true;
-      } else if (scrollY > changeToPyramidAt) {
-        meshTriangle.visible = false;
-        meshPyramid.visible = true;
-        meshCube.visible = false;
-      } else {
-        meshTriangle.visible = true;
-        meshPyramid.visible = false;
-        meshCube.visible = false;
-      }
-
-      // Incremento bounce time
-      bounceTime += 0.03;
-      const bounceHeight = Math.sin(bounceTime) * 0.1;
-
-      // Rotazione e bounce mesh visibile
-      if (meshTriangle.visible) {
-        meshTriangle.rotation.y = scrollY * 0.01;
-        meshTriangle.rotation.x = scrollY * 0.005;
-        meshTriangle.position.y = bounceHeight;
-      }
-      if (meshPyramid.visible) {
-        meshPyramid.rotation.y = scrollY * 0.01;
-        meshPyramid.rotation.x = scrollY * 0.005;
-        meshPyramid.position.y = bounceHeight;
-      }
-      if (meshCube.visible) {
-        meshCube.rotation.y = scrollY * 0.01;
-        meshCube.rotation.x = scrollY * 0.005;
-        meshCube.position.y = bounceHeight;
-      }
-
-      renderer.render(scene, camera);
-    }
-
-    animate();
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  </script>
-
-  <script>
-    const sidemenu = document.getElementById("sidemenu");
-    function openmenu() {
-      sidemenu.style.right = "0";
-    }
-    function closemenu() {
-      sidemenu.style.right = "-200px";
-    }
-  </script>
 
 </body>
 </html>
