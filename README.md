@@ -36,7 +36,7 @@ This portfolio was built using:
 
 - **HTML** — for structure  
 - **CSS** — for layout, color, and responsiveness  
-- **JavaScript** — for interactive elements such as Geometry Dash tribute, //toggles// and transitions
+- **JavaScript** — for interactive elements such as Geometry Dash tribute, Interactive drawing and transitions
 - **Zephyr & Reality Capture** — used for photogrammetric reconstruction of 3D models shown in the viewer
 
 
