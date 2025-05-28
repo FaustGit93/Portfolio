@@ -9,6 +9,8 @@ Ogni sezione del portfolio è pensata per essere **chiara**, **accessibile** e r
 
 Ho cercato di curare sia gli aspetti **tecnici** che quelli **estetici**, valorizzando l’**interazione**, l’**usabilità** e l’**impatto visivo**.
 
+> 🛠️ Alcuni testi o immagini potrebbero risultare non perfetti o essere dei **placeholder**: il portfolio è ancora in fase di aggiornamento e affinamento. Grazie per la comprensione!
+
 Ringrazio Stefano per la guida e l’ispirazione lungo questo percorso formativo.
 
 Resto a disposizione per qualsiasi **feedback** o **approfondimento**.
@@ -20,7 +22,7 @@ Resto a disposizione per qualsiasi **feedback** o **approfondimento**.
 Puoi clonare la repo da questo link e provare il progetto in locale:
 🔗 [https://github.com/FaustGit93/Portfolio](https://github.com/FaustGit93/Portfolio)
 
- Oppure visitare il sito direttamente a questo link:  
+oppure visitare il sito direttamente a questo link:  
 🌐 [https://portfolio-fausto-rabatti.vercel.app/index.html](https://portfolio-fausto-rabatti.vercel.app/index.html)
 
 ---
