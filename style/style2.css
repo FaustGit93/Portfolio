@@ -118,7 +118,17 @@ body {
   margin-bottom: 1em;
 }
 
-
+#TODO
+p strong {
+  font-weight: bold !important;
+}
+p em {
+  font-style: italic !important;
+}
+p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
 
 
 
