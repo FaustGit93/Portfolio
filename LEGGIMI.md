@@ -17,10 +17,10 @@ Resto a disposizione per qualsiasi **feedback** o **approfondimento**.
 
 ---
 
-Puoi clonare la repo da questo link:  
+Puoi clonare la repo da questo link e provare il progetto in locale:
 🔗 [https://github.com/FaustGit93/Portfolio](https://github.com/FaustGit93/Portfolio)
 
-e vedere il progetto in locale oppure visitare il sito direttamente a questo link:  
+ Oppure visitare il sito direttamente a questo link:  
 🌐 [https://portfolio-fausto-rabatti.vercel.app/index.html](https://portfolio-fausto-rabatti.vercel.app/index.html)
 
 ---
