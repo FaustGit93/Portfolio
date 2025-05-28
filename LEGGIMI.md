@@ -15,7 +15,7 @@ Ringrazio Stefano per la guida e l’ispirazione lungo questo percorso formativo
 
 Resto a disposizione per qualsiasi **feedback** o **approfondimento**.
 
-**Buona navigazione 🚢!**
+**Buona navigazione! 🏄‍♂️**
 
 ---
 
